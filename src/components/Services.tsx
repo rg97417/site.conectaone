@@ -1,4 +1,4 @@
-import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
 const sapServices = [
   { title: 'Implantação Completa', desc: 'Mapeamento aderente, go-live seguro e aceleração do Retorno sobre Investimento (ROI) desde os primeiros meses.' },
