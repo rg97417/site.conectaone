@@ -9,7 +9,7 @@ interface SEOProps {
 const SEO = ({ 
   title = "ConectaOne | Consultoria SAP Business One & Soluções em IA",
   description = "Acelere seu negócio com a ConectaOne. Especialistas em implantação SAP Business One, troca de consultoria, desenvolvimento de SaaS, CRM com IA e RPA (Power Automate) para empresas B2B.",
-  canonical = "https://conectaone.com.br"
+  canonical = "https://conectaone.com"
 }: SEOProps) => {
   const keywords = [
     "consultoria SAP Business One",
@@ -29,8 +29,8 @@ const SEO = ({
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "ConectaOne",
-    "url": "https://conectaone.com.br",
-    "logo": "https://conectaone.com.br/conectaone_logo_principal_1200.png",
+    "url": "https://conectaone.com",
+    "logo": "https://conectaone.com/conectaone_logo_principal_1200.png",
     "description": "Consultoria especializada em SAP Business One e desenvolvimento de soluções em Inteligência Artificial, RPA e Software Sob Medida (SaaS).",
     "address": {
       "@type": "PostalAddress",

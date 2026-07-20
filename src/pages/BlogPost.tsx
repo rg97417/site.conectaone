@@ -26,7 +26,7 @@ const BlogPost = () => {
       <SEO 
         title={`${post.title} | Blog ConectaOne`}
         description={post.excerpt}
-        canonical={`https://conectaone.com.br/blog/${post.slug}`}
+        canonical={`https://conectaone.com/blog/${post.slug}`}
       />
       
       <Header />

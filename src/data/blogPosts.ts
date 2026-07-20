@@ -139,5 +139,97 @@ Construir um SaaS não é fazer um "sisteminha" amador. Requer engenharia de sof
 
 Seja para automatizar a sua operação interna com um sistema sob medida, ou para lançar um novo produto no mercado, a ConectaOne tem o time de engenheiros, designers e arquitetos para tirar sua ideia do papel.
     `
+  },
+  {
+    id: '5',
+    slug: 'agentes-de-ia-para-vendas-b2b',
+    title: 'Agentes de IA para vendas: Como escalar sua prospecção B2B',
+    excerpt: 'Descubra como estruturar agentes virtuais de inteligência artificial para qualificar leads, fazer follow-up automático e lotar a agenda do seu time comercial.',
+    category: 'Vendas & IA',
+    date: '2024-06-05',
+    author: 'Equipe ConectaOne',
+    readTime: '6 min',
+    keywords: ['agentes de IA', 'IA para vendas', 'prospecção B2B', 'automação comercial', 'follow-up inteligente'],
+    content: `
+## O fim do "cold calling" ineficiente
+
+A prospecção B2B tradicional está cada vez mais cara. Colocar analistas seniores para mandar e-mails frios ou fazer ligações de qualificação para listas gigantescas é um desperdício de tempo e talento. 
+
+A revolução atual do mercado de vendas corporativas atende por um nome: **Agentes de Vendas com IA (AI Sales Agents)**.
+
+### Como funciona um Agente de Vendas de IA?
+Diferente de um chatbot engessado, um agente de IA generativa atua como um assistente de desenvolvimento de vendas (SDR) autônomo:
+1. **Triagem Inicial:** O agente entra em contato via e-mail ou WhatsApp, entende o contexto do lead e responde perguntas sobre o produto.
+2. **Qualificação (BANT):** A IA é treinada para descobrir se o lead tem budget, autoridade, necessidade e urgência.
+3. **Agendamento:** Se o lead for qualificado, a própria IA olha a agenda do seu vendedor humano e marca a reunião.
+
+### Vantagens competitivas
+- **Operação 24/7:** Leads respondidos em menos de 1 minuto, independente do horário.
+- **Escala Infinita:** Sua IA pode falar com 10.000 contatos simultaneamente com personalização total.
+- **Foco no Fechamento:** Seus executivos de vendas (Closers) só entram na call com quem já quer comprar.
+
+Se a sua meta é triplicar o pipeline de vendas neste ano sem inflar a folha de pagamento, a ConectaOne pode desenhar e integrar o seu primeiro agente de IA.
+    `
+  },
+  {
+    id: '6',
+    slug: 'erp-lento-o-que-avaliar-antes-de-customizar-sap',
+    title: 'SAP Business One lento? O que avaliar antes de investir em customizações',
+    excerpt: 'Seu ERP está travando? Antes de gastar com novos desenvolvimentos, veja nosso checklist técnico de performance para otimizar o SAP B1.',
+    category: 'SAP Business One',
+    date: '2024-06-12',
+    author: 'Equipe ConectaOne',
+    readTime: '7 min',
+    keywords: ['SAP Business One lento', 'performance SAP', 'customização SAP B1', 'HANA', 'suporte técnico SAP'],
+    content: `
+## O mito de que "O SAP é lento"
+
+Um dos problemas mais frustrantes para quem investe em um ERP de classe mundial como o **SAP Business One** é sofrer com lentidão no sistema, relatórios que demoram minutos para rodar e travamentos diários.
+
+A verdade inconveniente é que o SAP não é lento. Na imensa maioria das vezes, o problema está na **arquitetura da infraestrutura, queries mal escritas ou excesso de add-ons conflituantes**.
+
+### Checklist de Performance SAP B1
+
+Antes de aprovar orçamentos caríssimos de customização para "resolver" problemas do sistema, avalie:
+
+1. **Saúde do Banco de Dados (SQL/HANA):** Tabelas fragmentadas e falta de indexação destroem a performance. O seu banco de dados tem manutenção regular?
+2. **Queries Não Otimizadas (Transaction Notification):** Códigos colocados no Transaction Notification que rodam a cada clique do usuário são os maiores vilões da lentidão. 
+3. **Hardware e Cloud:** Seu servidor em nuvem está dimensionado corretamente para a sua versão do HANA?
+4. **Acúmulo de Add-ons:** Muitas consultorias resolvem problemas empilhando Add-ons pesados. Muitas vezes, uma integração via API é muito mais rápida e limpa.
+
+### A Abordagem da ConectaOne
+Nós não vendemos desenvolvimento como primeira resposta. Nossa equipe técnica realiza um **Health Check (Auditoria de Performance)** completo no seu ambiente. Diagnosticamos o gargalo, limpamos o código legado e otimizamos o banco de dados. 
+
+Só propomos customizações quando a raiz do problema estiver estabilizada. Quer seu SAP voando de novo? Fale com nosso time de especialistas.
+    `
+  },
+  {
+    id: '7',
+    slug: 'atendimento-automatizado-ia-generativa',
+    title: 'Atendimento ao cliente com IA Generativa: A revolução do suporte B2B',
+    excerpt: 'Substitua os antigos chatbots de menu numérico por inteligência artificial que entende o contexto, resolve problemas e consulta manuais em segundos.',
+    category: 'Atendimento & IA',
+    date: '2024-06-18',
+    author: 'Equipe ConectaOne',
+    readTime: '5 min',
+    keywords: ['atendimento com IA', 'suporte B2B automatizado', 'IA generativa', 'chatbots inteligentes', 'customer success'],
+    content: `
+## A morte do Chatbot de "Digite 1"
+
+Ninguém aguenta mais entrar em contato com um suporte e ficar preso em um menu engessado: *"Digite 1 para financeiro, 2 para suporte"*. No mercado B2B, onde o ticket médio é alto e o tempo do cliente é valioso, um atendimento ruim gera churn (cancelamento) rapidamente.
+
+A boa notícia é que a **IA Generativa (como o motor do ChatGPT)** mudou as regras do jogo do Customer Success.
+
+### O que uma IA moderna pode fazer pelo seu suporte?
+
+- **Compreensão de Contexto (NLP):** O cliente pode mandar um áudio de 2 minutos explicando um problema complexo. A IA transcreve, resume e entende a intenção instantaneamente.
+- **Base de Conhecimento (RAG):** Podemos conectar a IA a todos os manuais técnicos, PDFs e histórico de chamados da sua empresa. Quando o cliente pergunta *"Como configuro o módulo X?"*, a IA lê o seu manual técnico e responde de forma didática, sem envolver um humano.
+- **Resoluções Automáticas:** Através de integrações via API, a IA pode resetar senhas, enviar 2ª via de boletos, alterar planos e abrir chamados direto no Jira ou Zendesk.
+
+### Redução de Custos vs Aumento de Qualidade
+A mágica da IA Generativa é que ela reduz o custo operacional do seu Nível 1 de suporte em até 80%, mas, ao mesmo tempo, **aumenta a satisfação do cliente (NPS)**. Isso porque o cliente tem seu problema resolvido às 3 da manhã de um domingo, sem esperar na fila.
+
+Quer modernizar o suporte da sua empresa? A ConectaOne cria fluxos de atendimento com IA integrados ao WhatsApp, site e sistemas internos.
+    `
   }
 ];

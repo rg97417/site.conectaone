@@ -2,34 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core Pages -->
   <url>
-    <loc>https://conectaone.com.br/</loc>
+    <loc>https://conectaone.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://conectaone.com.br/blog</loc>
+    <loc>https://conectaone.com/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Blog Posts -->
   <url>
-    <loc>https://conectaone.com.br/blog/como-trocar-de-consultoria-sap-business-one</loc>
+    <loc>https://conectaone.com/blog/como-trocar-de-consultoria-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com.br/blog/rpa-power-automate-reduzindo-trabalho-manual</loc>
+    <loc>https://conectaone.com/blog/rpa-power-automate-reduzindo-trabalho-manual</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com.br/blog/reforma-tributaria-sap-business-one</loc>
+    <loc>https://conectaone.com/blog/reforma-tributaria-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com.br/blog/como-criar-um-saas-b2b-com-ia</loc>
+    <loc>https://conectaone.com/blog/como-criar-um-saas-b2b-com-ia</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/agentes-de-ia-para-vendas-b2b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/erp-lento-o-que-avaliar-antes-de-customizar-sap</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/atendimento-automatizado-ia-generativa</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
