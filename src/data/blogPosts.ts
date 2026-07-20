@@ -231,5 +231,95 @@ A mágica da IA Generativa é que ela reduz o custo operacional do seu Nível 1 
 
 Quer modernizar o suporte da sua empresa? A ConectaOne cria fluxos de atendimento com IA integrados ao WhatsApp, site e sistemas internos.
     `
+  },
+  {
+    id: '8',
+    slug: 'integracao-sap-business-one-ecommerce',
+    title: 'Aumente suas vendas online integrando o SAP Business One ao E-commerce',
+    excerpt: 'Descubra como acabar com erros de estoque e atrasos na entrega conectando nativamente seu SAP B1 com plataformas como VTEX, Shopify e Nuvemshop.',
+    category: 'SAP Business One',
+    date: '2024-06-25',
+    author: 'Equipe ConectaOne',
+    readTime: '6 min',
+    keywords: ['integração SAP e-commerce', 'SAP B1 VTEX', 'SAP Shopify', 'API SAP Business One', 'gestão de estoque omnichanel'],
+    content: `
+## O caos da operação manual no e-commerce
+
+Se a sua empresa vende online e usa o SAP Business One no backoffice, mas os dois sistemas não conversam perfeitamente, você está perdendo dinheiro. Digitar pedidos manualmente, atualizar planilhas de estoque e emitir notas fiscais uma a uma são os maiores causadores de rupturas e reclamações de clientes.
+
+### A solução: Integração via Service Layer (API)
+
+O SAP Business One possui uma camada de serviços robusta (Service Layer) que permite criar fluxos bidirecionais com qualquer plataforma de e-commerce moderna (VTEX, Shopify, Nuvemshop, Magento).
+
+**O que uma integração bem feita resolve instantaneamente:**
+- **Sincronização de Estoque em Tempo Real:** Vendeu no site, a reserva é feita no SAP. Acabou no centro de distribuição, o produto sai do ar no site. Zero risco de vender o que não tem.
+- **Criação de Pedidos Automática:** O cliente passou o cartão, o pedido (Sales Order) cai no SAP na mesma hora, já puxando a tabela de preços e os impostos corretos.
+- **Faturamento e Rastreamento:** Assim que a nota fiscal é emitida no SAP, a integração envia a chave de acesso e o link de rastreamento da transportadora de volta para o cliente final.
+
+### Por que escolher a ConectaOne para integrar?
+
+Não usamos "conetores engessados" que te prendem a uma mensalidade absurda. Desenhamos a arquitetura de integração através de middlewares modernos, garantindo que o seu e-commerce não caia na Black Friday e que seu SAP B1 continue performando com velocidade.
+    `
+  },
+  {
+    id: '9',
+    slug: 'rpa-automacao-conciliacao-bancaria',
+    title: 'Adeus planilhas: Como a Automação (RPA) revolucionou a Conciliação Bancária',
+    excerpt: 'Seu time financeiro gasta dias baixando extratos e cruzando dados? Entenda como robôs (RPA) fazem isso em poucos minutos, sem erros.',
+    category: 'Automação & RPA',
+    date: '2024-07-02',
+    author: 'Equipe ConectaOne',
+    readTime: '5 min',
+    keywords: ['automação conciliação bancária', 'RPA financeiro', 'Power Automate finanças', 'redução de custos', 'robô financeiro'],
+    content: `
+## O gargalo do setor financeiro
+
+Fechamento de mês é sinônimo de hora extra na maioria das empresas. O time financeiro entra em dezenas de portais bancários, baixa arquivos OFX ou PDFs, abre o ERP e passa horas fazendo o "de/para" para descobrir qual boleto foi pago e quais tarifas foram cobradas.
+
+Esse trabalho repetitivo não só é caro e desmotivador, como também é altamente sujeito a falha humana. 
+
+### A entrada dos Robôs (RPA)
+
+Com tecnologias como Microsoft Power Automate, UIPath ou scripts em Python, nós criamos "trabalhadores digitais" (Robotic Process Automation - RPA) que mimetizam as ações de um ser humano no computador.
+
+**Como funciona a rotina de um Robô Financeiro:**
+1. **Login Automático:** Às 06h00 da manhã, o robô acessa os portais dos bancos (Itaú, Bradesco, etc) com credenciais seguras.
+2. **Download de Arquivos:** Ele baixa os extratos do dia anterior e arquivos de retorno (CNAB).
+3. **Leitura e Cruzamento:** O robô lê as linhas, acessa o seu ERP (como SAP, Totvs, Omie) e realiza as baixas dos títulos pagos.
+4. **Relatório de Exceções:** Ele gera um relatório para o seu analista financeiro mostrando apenas o que não bateu (ex: cliente pagou a menor, tarifa bancária nova). O analista passa a atuar apenas nas exceções!
+
+O ROI (Retorno sobre Investimento) de projetos de automação financeira costuma se pagar em menos de 3 meses. Sua equipe para de digitar e começa a fazer análises estratégicas.
+    `
+  },
+  {
+    id: '10',
+    slug: 'ia-rh-onboarding-recrutamento',
+    title: 'Transformação no RH: Inteligência Artificial no Recrutamento e Onboarding',
+    excerpt: 'Como ferramentas de IA estão ajudando o setor de Recursos Humanos a encontrar talentos mais rápido e a criar processos de integração incríveis.',
+    category: 'Inteligência Artificial',
+    date: '2024-07-09',
+    author: 'Equipe ConectaOne',
+    readTime: '6 min',
+    keywords: ['IA no RH', 'automação recrutamento', 'onboarding com IA', 'triagem de currículos', 'People Analytics'],
+    content: `
+## O RH estratégico não lê 500 currículos
+
+O departamento de Recursos Humanos deixou de ser apenas o setor que cuida da folha de pagamento e admissão. Hoje, o desafio é atrair e reter talentos. Mas como fazer isso quando a equipe gasta 70% do tempo lendo currículos fora do perfil ou respondendo dúvidas básicas de novos funcionários?
+
+A Inteligência Artificial chegou para assumir o trabalho operacional do RH.
+
+### 1. Triagem Inteligente de Currículos
+Ao invés de ler PDF por PDF, uma IA analisa os currículos baseada nas competências exigidas na vaga. Ela não olha apenas para palavras-chave vazias, mas compreende a trajetória e a experiência do candidato, ranqueando os perfis com maior "fit" (aderência) para o cargo em questão de segundos.
+
+### 2. O "Buddy" Virtual (Onboarding)
+O primeiro mês de um funcionário é cheio de dúvidas: *"Como peço reembolso? Onde fica o manual do plano de saúde? Como acesso a VPN?"*.
+
+A ConectaOne cria chatbots internos alimentados pelos documentos do seu RH (arquitetura RAG). O novo colaborador pode perguntar essas coisas pelo Teams, Slack ou WhatsApp e a IA responde instantaneamente, baseada nas políticas oficiais da empresa. Isso desafoga o time de RH brutalmente.
+
+### 3. Entrevistas Preliminares por Voz
+Agentes de IA já são capazes de realizar a primeira triagem por telefone ou vídeo, validando nível de inglês, disponibilidade de horário e pretensão salarial, repassando para o recrutador apenas a gravação e um resumo dos candidatos qualificados.
+
+Quer levar o seu setor de Gestão de Pessoas para o futuro? A IA não substitui o calor humano do RH, ela apenas libera o tempo para que vocês possam ser humanos de verdade.
+    `
   }
 ];

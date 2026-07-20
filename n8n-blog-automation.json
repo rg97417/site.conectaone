@@ -1,0 +1,172 @@
+{
+  "name": "Gerador Automático de Artigos SEO - ConectaOne",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "id": "1",
+      "name": "Gatilho Diário (8h)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "docId": "COLOQUE_ID_DA_SUA_PLANILHA_AQUI",
+        "sheetName": "Página1",
+        "options": {}
+      },
+      "id": "2",
+      "name": "Ler Palavra-Chave (Google Sheets)",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "messages": {
+          "messageValues": [
+            {
+              "role": "system",
+              "content": "Você é um especialista em SEO B2B, Inteligência Artificial e SAP Business One. Escreva um artigo técnico de blog em Markdown."
+            },
+            {
+              "content": "=\"Escreva um artigo de 800 palavras focado na palavra-chave: \" + $json.keyword + \". Retorne um JSON com os campos: title, excerpt, content (em markdown), category, keywords (array de strings).\""
+            }
+          ]
+        },
+        "jsonOutput": true
+      },
+      "id": "3",
+      "name": "Escrever Artigo (OpenAI)",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1,
+      "position": [
+        650,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://seu-supabase-url.supabase.co/rest/v1/blogs",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "SUA_CHAVE_SUPABASE"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer SUA_CHAVE_SUPABASE"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "title",
+              "value": "={{ $json.message.content.title }}"
+            },
+            {
+              "name": "content",
+              "value": "={{ $json.message.content.content }}"
+            },
+            {
+              "name": "slug",
+              "value": "={{ $json.message.content.title.toLowerCase().replace(/ /g, '-') }}"
+            }
+          ]
+        }
+      },
+      "id": "4",
+      "name": "Salvar no Banco (Supabase API)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        850,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "URL_DO_WEBHOOK_DA_VERCEL_PARA_RECOMPILAR_O_SITE",
+        "options": {}
+      },
+      "id": "5",
+      "name": "Avisar Vercel (Rebuild)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        1050,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Gatilho Diário (8h)": {
+      "main": [
+        [
+          {
+            "node": "Ler Palavra-Chave (Google Sheets)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ler Palavra-Chave (Google Sheets)": {
+      "main": [
+        [
+          {
+            "node": "Escrever Artigo (OpenAI)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Escrever Artigo (OpenAI)": {
+      "main": [
+        [
+          {
+            "node": "Salvar no Banco (Supabase API)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Salvar no Banco (Supabase API)": {
+      "main": [
+        [
+          {
+            "node": "Avisar Vercel (Rebuild)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {}
+}
