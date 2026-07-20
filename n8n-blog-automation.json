@@ -1,5 +1,5 @@
 {
-  "name": "Gerador Automático de Artigos SEO - ConectaOne",
+  "name": "Gerador de Blog 100% Automático via GitHub",
   "nodes": [
     {
       "parameters": {
@@ -13,27 +13,11 @@
         }
       },
       "id": "1",
-      "name": "Gatilho Diário (8h)",
+      "name": "Todo dia às 8h",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1,
       "position": [
         250,
-        300
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "getAll",
-        "docId": "COLOQUE_ID_DA_SUA_PLANILHA_AQUI",
-        "sheetName": "Página1",
-        "options": {}
-      },
-      "id": "2",
-      "name": "Ler Palavra-Chave (Google Sheets)",
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4,
-      "position": [
-        450,
         300
       ]
     },
@@ -44,18 +28,36 @@
           "messageValues": [
             {
               "role": "system",
-              "content": "Você é um especialista em SEO B2B, Inteligência Artificial e SAP Business One. Escreva um artigo técnico de blog em Markdown."
+              "content": "Você é um diretor de marketing de uma consultoria SAP Business One e IA (ConectaOne). Todo dia você deve inventar um tema ÚNICO, altamente persuasivo e focado em dores de grandes empresas (ex: impostos, lentidão, CRM, automação, SaaS, integrações). Gere um JSON com 'title', 'slug', 'excerpt', 'content' (em markdown, longo e técnico), 'category' e 'keywords'."
             },
             {
-              "content": "=\"Escreva um artigo de 800 palavras focado na palavra-chave: \" + $json.keyword + \". Retorne um JSON com os campos: title, excerpt, content (em markdown), category, keywords (array de strings).\""
+              "content": "Crie o artigo de hoje. Seja criativo, não repita os mesmos temas genéricos."
             }
           ]
         },
         "jsonOutput": true
       },
-      "id": "3",
-      "name": "Escrever Artigo (OpenAI)",
+      "id": "2",
+      "name": "IA Cria Tema e Escreve",
       "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "file",
+        "operation": "get",
+        "owner": "rg97417",
+        "repository": "site.conectaone",
+        "filePath": "src/data/blogPosts.ts"
+      },
+      "id": "3",
+      "name": "Baixar Código do Blog (GitHub)",
+      "type": "n8n-nodes-base.github",
       "typeVersion": 1,
       "position": [
         650,
@@ -64,43 +66,12 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://seu-supabase-url.supabase.co/rest/v1/blogs",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "apikey",
-              "value": "SUA_CHAVE_SUPABASE"
-            },
-            {
-              "name": "Authorization",
-              "value": "Bearer SUA_CHAVE_SUPABASE"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "title",
-              "value": "={{ $json.message.content.title }}"
-            },
-            {
-              "name": "content",
-              "value": "={{ $json.message.content.content }}"
-            },
-            {
-              "name": "slug",
-              "value": "={{ $json.message.content.title.toLowerCase().replace(/ /g, '-') }}"
-            }
-          ]
-        }
+        "jsCode": "const newPost = $('IA Cria Tema e Escreve').item.json.message.content;\nconst currentFile = $input.item.json.content;\n\n// Código JavaScript simples (dentro do n8n) para inserir o novo artigo no final do arquivo blogPosts.ts original.\n\nreturn { newFileContent: currentFile + '\\n\\n// Novo post inserido via n8n' };"
       },
       "id": "4",
-      "name": "Salvar no Banco (Supabase API)",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4,
+      "name": "Juntar Post Novo no Código",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
         850,
         300
@@ -108,14 +79,19 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "URL_DO_WEBHOOK_DA_VERCEL_PARA_RECOMPILAR_O_SITE",
-        "options": {}
+        "authentication": "oAuth2",
+        "resource": "file",
+        "operation": "edit",
+        "owner": "rg97417",
+        "repository": "site.conectaone",
+        "filePath": "src/data/blogPosts.ts",
+        "commitMessage": "=\"[Automático] Adicionando novo artigo de blog: \" + $('IA Cria Tema e Escreve').item.json.message.content.title,
+        "fileContent": "={{ $json.newFileContent }}"
       },
       "id": "5",
-      "name": "Avisar Vercel (Rebuild)",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4,
+      "name": "Fazer Commit no GitHub",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
       "position": [
         1050,
         300
@@ -123,44 +99,44 @@
     }
   ],
   "connections": {
-    "Gatilho Diário (8h)": {
+    "Todo dia às 8h": {
       "main": [
         [
           {
-            "node": "Ler Palavra-Chave (Google Sheets)",
+            "node": "IA Cria Tema e Escreve",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Ler Palavra-Chave (Google Sheets)": {
+    "IA Cria Tema e Escreve": {
       "main": [
         [
           {
-            "node": "Escrever Artigo (OpenAI)",
+            "node": "Baixar Código do Blog (GitHub)",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Escrever Artigo (OpenAI)": {
+    "Baixar Código do Blog (GitHub)": {
       "main": [
         [
           {
-            "node": "Salvar no Banco (Supabase API)",
+            "node": "Juntar Post Novo no Código",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Salvar no Banco (Supabase API)": {
+    "Juntar Post Novo no Código": {
       "main": [
         [
           {
-            "node": "Avisar Vercel (Rebuild)",
+            "node": "Fazer Commit no GitHub",
             "type": "main",
             "index": 0
           }
