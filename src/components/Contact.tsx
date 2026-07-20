@@ -1,42 +1,57 @@
 import { useState } from 'react';
-import { Mail, Phone, Send, MessageCircle } from 'lucide-react';
-import AnimatedElement from './AnimatedElement';
+import { Mail, Phone, Send, ArrowRight } from 'lucide-react';
 
-const WhatsAppButton = () => {
-  const url = "https://api.whatsapp.com/send/?phone=5511974178200&text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+as+solu%C3%A7%C3%B5es+personalizadas+da+ConectaOne.&type=phone_number&app_absent=0";
-  return (
-    <a href={url} target="_blank" rel="noopener noreferrer"
-       className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full text-white shadow-lg transition-all duration-300 hover:scale-110"
-       style={{ background: 'linear-gradient(135deg, #16a34a, #15803d)', boxShadow: '0 4px 24px rgba(22,163,74,0.45)' }}
-       aria-label="Contato via WhatsApp">
-      <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M20.4 3.6C18.2 1.4 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.7 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.4-6.2-3.6-8.4zM12 22c-1.8 0-3.5-.5-5.1-1.4l-.4-.2-3.9 1 1-3.8-.2-.4C2.5 15.5 2 13.8 2 12c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10zm5.5-7.4c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.1-.2.2-.8.9-1 1.1-.2.2-.3.2-.6.1-1.7-.9-2.8-1.6-4-3.6-.3-.5.3-.5.9-1.7.1-.2 0-.4-.1-.6s-.7-1.8-1-2.4c-.3-.7-.6-.6-.8-.6h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/>
-      </svg>
-    </a>
-  );
+const whatsappUrl = "https://api.whatsapp.com/send/?phone=5511974178200&text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+as+solu%C3%A7%C3%B5es+personalizadas+da+ConectaOne.&type=phone_number&app_absent=0";
+
+const inputStyle: React.CSSProperties = {
+  width: '100%',
+  padding: '10px 14px',
+  fontSize: 14,
+  color: '#111827',
+  background: '#ffffff',
+  border: '1px solid #d1d5db',
+  borderRadius: 8,
+  outline: 'none',
+  fontFamily: 'Inter, sans-serif',
+  transition: 'border-color 0.15s',
 };
 
-const inputClass = `
-  w-full px-4 py-3 rounded-xl text-sm text-white placeholder-brand-muted/50
-  focus:outline-none focus:ring-2 focus:ring-brand-indigo/50 transition-all duration-200
-`;
-const inputStyle = {
-  background: 'rgba(255,255,255,0.05)',
-  border: '1px solid rgba(255,255,255,0.1)',
-};
-const inputFocusStyle = {
-  border: '1px solid rgba(99,102,241,0.5)',
-};
+const WAButton = () => (
+  <a
+    href={whatsappUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="WhatsApp"
+    style={{
+      position: 'fixed',
+      bottom: 24,
+      right: 24,
+      zIndex: 100,
+      width: 52,
+      height: 52,
+      borderRadius: '50%',
+      background: '#16a34a',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
+      transition: 'transform 0.15s',
+    }}
+    onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.08)'}
+    onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)'}
+  >
+    <svg width="24" height="24" fill="#fff" viewBox="0 0 24 24">
+      <path d="M20.4 3.6C18.2 1.4 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.7 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.4-6.2-3.6-8.4zM12 22c-1.8 0-3.5-.5-5.1-1.4l-.4-.2-3.9 1 1-3.8-.2-.4C2.5 15.5 2 13.8 2 12c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10zm5.5-7.4c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.1-.2.2-.8.9-1 1.1-.2.2-.3.2-.6.1-1.7-.9-2.8-1.6-4-3.6-.3-.5.3-.5.9-1.7.1-.2 0-.4-.1-.6s-.7-1.8-1-2.4c-.3-.7-.6-.6-.8-.6h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/>
+    </svg>
+  </a>
+);
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', company: '', message: '' });
-  const [status, setStatus] = useState<'idle'|'submitting'|'success'|'error'>('idle');
+  const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', message: '' });
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=5511974178200&text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+as+solu%C3%A7%C3%B5es+personalizadas+da+ConectaOne.&type=phone_number&app_absent=0";
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(p => ({ ...p, [e.target.name]: e.target.value }));
-  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm(p => ({ ...p, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,192 +60,203 @@ const Contact = () => {
       await fetch('https://n8n.galhardo.online/webhook/40b563ec-3012-4ed1-bea5-ec46dadd0130', {
         method: 'POST', mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(form),
       });
       setStatus('success');
-      setFormData({ name: '', email: '', phone: '', company: '', message: '' });
-      setTimeout(() => setStatus('idle'), 4000);
+      setForm({ name: '', email: '', phone: '', company: '', message: '' });
+      setTimeout(() => setStatus('idle'), 5000);
     } catch {
       setStatus('error');
-      setTimeout(() => setStatus('idle'), 4000);
+      setTimeout(() => setStatus('idle'), 5000);
     }
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 relative overflow-hidden aurora-bg">
-      <WhatsAppButton />
+    <section
+      id="contact"
+      className="section"
+      style={{ background: '#ffffff', borderTop: '1px solid #e5e7eb' }}
+    >
+      <WAButton />
 
-      <div className="orb w-[500px] h-[500px] -bottom-20 -left-20 opacity-25"
-           style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.20) 0%, transparent 70%)' }} />
+      <div className="container-xl">
 
-      <div className="section-container relative z-10">
-        <AnimatedElement>
-          <p className="section-tag text-center">Entre em Contato</p>
-          <h2 className="section-title">
-            Vamos <span className="text-gradient">Conversar</span>
-          </h2>
-        </AnimatedElement>
-        <AnimatedElement delay={150}>
-          <p className="section-subtitle mb-14">
-            Nossa equipe está pronta para entender as necessidades da sua empresa
-            e mostrar como a IA pode transformar seus resultados.
+        {/* Header */}
+        <div style={{ marginBottom: 48 }}>
+          <span className="section-label">Contato</span>
+          <h2 className="section-heading">Vamos conversar</h2>
+          <p className="section-sub">
+            Nossa equipe está pronta para entender as necessidades da sua empresa e mostrar como a automação pode transformar seus resultados.
           </p>
-        </AnimatedElement>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 340px',
+            gap: 24,
+            alignItems: 'start',
+          }}
+          className="contact-grid"
+        >
 
           {/* Form */}
-          <AnimatedElement animation="fade-right" className="lg:col-span-2">
-            <div className="rounded-2xl p-7 md:p-10"
-                 style={{ background: 'rgba(17,24,39,0.7)', border: '1px solid rgba(99,102,241,0.18)', backdropFilter: 'blur(16px)' }}>
-              <h3 className="text-xl font-black text-white mb-7" style={{ fontFamily: 'Exo 2, sans-serif' }}>
-                Fale com um Especialista
-              </h3>
+          <div
+            style={{
+              border: '1px solid #e5e7eb',
+              borderRadius: 12,
+              padding: '32px 28px',
+              background: '#ffffff',
+            }}
+          >
+            <h3 style={{ fontSize: 16, fontWeight: 600, color: '#111827', marginBottom: 24, letterSpacing: '-0.01em' }}>
+              Fale com um especialista
+            </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  {[
-                    { id: 'name',    label: 'Nome completo',   type: 'text',  placeholder: 'Seu nome' },
-                    { id: 'email',   label: 'Email',           type: 'email', placeholder: 'seu@email.com' },
-                    { id: 'phone',   label: 'Telefone',        type: 'tel',   placeholder: '(11) 90000-0000' },
-                    { id: 'company', label: 'Empresa',         type: 'text',  placeholder: 'Nome da empresa' },
-                  ].map(f => (
-                    <div key={f.id}>
-                      <label className="block text-xs font-semibold text-brand-muted mb-2 tracking-wide uppercase">
-                        {f.label}
-                      </label>
-                      <input
-                        type={f.type} id={f.id} name={f.id}
-                        value={formData[f.id as keyof typeof formData]}
-                        onChange={handleChange}
-                        className={inputClass}
-                        style={inputStyle}
-                        placeholder={f.placeholder}
-                        required={f.id === 'name' || f.id === 'email'}
-                        onFocus={e => Object.assign(e.target.style, inputFocusStyle)}
-                        onBlur={e => Object.assign(e.target.style, inputStyle)}
-                      />
-                    </div>
-                  ))}
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-brand-muted mb-2 tracking-wide uppercase">
-                    Como podemos ajudar?
-                  </label>
-                  <textarea
-                    id="message" name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={4}
-                    className={inputClass}
-                    style={inputStyle}
-                    placeholder="Descreva brevemente sua necessidade ou desafio..."
-                    required
-                    onFocus={e => Object.assign(e.target.style, inputFocusStyle)}
-                    onBlur={e => Object.assign(e.target.style, inputStyle)}
-                  />
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                  <button type="submit" disabled={status === 'submitting'}
-                          className="btn-primary flex-1 py-4 text-base">
-                    {status === 'submitting' ? (
-                      <span className="flex items-center gap-2">
-                        <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
-                        </svg>
-                        Enviando…
-                      </span>
-                    ) : (
-                      <>
-                        <Send className="h-4 w-4 mr-2" />
-                        Enviar Solicitação
-                      </>
-                    )}
-                  </button>
-
-                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"
-                     className="btn-whatsapp flex-1 py-4 text-base justify-center flex items-center gap-2">
-                    <MessageCircle className="h-4 w-4" />
-                    WhatsApp
-                  </a>
-                </div>
-
-                {status === 'success' && (
-                  <div className="rounded-xl p-4 text-center text-sm font-medium"
-                       style={{ background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.3)', color: '#6ee7b7' }}>
-                    ✓ Mensagem enviada com sucesso! Entraremos em contato em breve.
-                  </div>
-                )}
-                {status === 'error' && (
-                  <div className="rounded-xl p-4 text-center text-sm font-medium"
-                       style={{ background: 'rgba(239,68,68,0.10)', border: '1px solid rgba(239,68,68,0.25)', color: '#fca5a5' }}>
-                    Ocorreu um erro. Por favor tente novamente ou use o WhatsApp.
-                  </div>
-                )}
-              </form>
-            </div>
-          </AnimatedElement>
-
-          {/* Info card */}
-          <AnimatedElement animation="fade-left" delay={100}>
-            <div className="rounded-2xl p-7 h-full flex flex-col"
-                 style={{ background: 'rgba(17,24,39,0.7)', border: '1px solid rgba(255,255,255,0.08)', backdropFilter: 'blur(16px)' }}>
-              <h3 className="text-lg font-black text-white mb-6" style={{ fontFamily: 'Exo 2, sans-serif' }}>
-                Informações de Contato
-              </h3>
-
-              <div className="space-y-5 mb-8">
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }} className="form-row">
                 {[
-                  { icon: <Mail className="w-4 h-4" />, label: 'Email', value: 'contato@conectaone.com', href: 'mailto:contato@conectaone.com' },
-                  { icon: <Phone className="w-4 h-4" />, label: 'Telefone', value: '+55 (11) 97417-8200', href: 'tel:+5511974178200' },
-                ].map((c, i) => (
-                  <a key={i} href={c.href}
-                     className="flex items-center gap-3 group hover:opacity-80 transition-opacity">
-                    <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-brand-indigo"
-                         style={{ background: 'rgba(99,102,241,0.12)', border: '1px solid rgba(99,102,241,0.25)' }}>
-                      {c.icon}
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-brand-muted uppercase tracking-wide">{c.label}</p>
-                      <p className="text-sm font-semibold text-white">{c.value}</p>
-                    </div>
-                  </a>
+                  { id: 'name',    label: 'Nome',    type: 'text',  placeholder: 'Seu nome' },
+                  { id: 'email',   label: 'Email',   type: 'email', placeholder: 'seu@email.com' },
+                  { id: 'phone',   label: 'Telefone',type: 'tel',   placeholder: '(11) 90000-0000' },
+                  { id: 'company', label: 'Empresa', type: 'text',  placeholder: 'Nome da empresa' },
+                ].map(f => (
+                  <div key={f.id}>
+                    <label style={{ display: 'block', fontSize: 12, color: '#6b7280', marginBottom: 6, fontWeight: 500 }}>
+                      {f.label}
+                    </label>
+                    <input
+                      type={f.type}
+                      id={f.id}
+                      name={f.id}
+                      value={form[f.id as keyof typeof form]}
+                      onChange={handleChange}
+                      placeholder={f.placeholder}
+                      required={f.id === 'name' || f.id === 'email'}
+                      style={inputStyle}
+                      onFocus={e => (e.currentTarget.style.borderColor = '#9ca3af')}
+                      onBlur={e => (e.currentTarget.style.borderColor = '#d1d5db')}
+                    />
+                  </div>
                 ))}
               </div>
 
-              <div className="pt-5 border-t border-white/6 mb-6">
-                <p className="text-xs font-semibold text-white mb-2">Horário de Atendimento</p>
-                <p className="text-xs text-brand-muted">Segunda a Sexta: 9h às 18h</p>
-                <p className="text-xs text-brand-muted">Sábado: 9h às 12h</p>
+              <div>
+                <label style={{ display: 'block', fontSize: 12, color: '#6b7280', marginBottom: 6, fontWeight: 500 }}>
+                  Mensagem
+                </label>
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  rows={4}
+                  placeholder="Descreva brevemente sua necessidade..."
+                  required
+                  style={{ ...inputStyle, resize: 'vertical' }}
+                  onFocus={e => (e.currentTarget.style.borderColor = '#9ca3af')}
+                  onBlur={e => (e.currentTarget.style.borderColor = '#d1d5db')}
+                />
               </div>
 
-              <div className="pt-5 border-t border-white/6 flex-1">
-                <p className="text-xs font-semibold text-white mb-3">Nossas Soluções</p>
-                <div className="flex flex-wrap gap-2">
-                  {['SAP Business One', 'Automação IA', 'Integração', 'Análise Preditiva', 'Chatbot', 'Micro SaaS'].map((t, i) => (
-                    <span key={i} className="text-[10px] px-2.5 py-1 rounded-full"
-                          style={{ background: 'rgba(99,102,241,0.10)', color: '#a5b4fc', border: '1px solid rgba(99,102,241,0.20)' }}>
-                      {t}
-                    </span>
-                  ))}
-                </div>
+              <div style={{ display: 'flex', gap: 10 }}>
+                <button
+                  type="submit"
+                  disabled={status === 'submitting'}
+                  className="btn btn-primary btn-lg"
+                  style={{ flex: 1, justifyContent: 'center', opacity: status === 'submitting' ? 0.6 : 1 }}
+                >
+                  <Send size={14} />
+                  {status === 'submitting' ? 'Enviando…' : 'Enviar'}
+                </button>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline btn-lg"
+                  style={{ flex: 1, justifyContent: 'center' }}
+                >
+                  WhatsApp
+                </a>
               </div>
 
-              {/* Response time badge */}
-              <div className="mt-6 pt-5 border-t border-white/6">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse-slow" />
-                  <p className="text-xs text-brand-muted">Resposta em até <strong className="text-white">2 horas</strong> em dias úteis</p>
+              {status === 'success' && (
+                <p style={{ fontSize: 13, color: '#16a34a', textAlign: 'center' }}>
+                  Mensagem enviada. Entraremos em contato em breve.
+                </p>
+              )}
+              {status === 'error' && (
+                <p style={{ fontSize: 13, color: '#dc2626', textAlign: 'center' }}>
+                  Erro ao enviar. Tente novamente ou use o WhatsApp.
+                </p>
+              )}
+            </form>
+          </div>
+
+          {/* Info sidebar */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+
+            {[
+              { icon: <Mail size={16} />, label: 'Email', value: 'contato@conectaone.com', href: 'mailto:contato@conectaone.com' },
+              { icon: <Phone size={16} />, label: 'Telefone', value: '+55 (11) 97417-8200', href: 'tel:+5511974178200' },
+            ].map((c, i) => (
+              <a
+                key={i}
+                href={c.href}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 12,
+                  padding: '16px 18px',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: 10,
+                  background: '#ffffff',
+                  transition: 'border-color 0.15s',
+                  textDecoration: 'none',
+                }}
+                onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.borderColor = '#d1d5db'}
+                onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.borderColor = '#e5e7eb'}
+              >
+                <span style={{ color: '#9ca3af', flexShrink: 0 }}>{c.icon}</span>
+                <div>
+                  <p style={{ fontSize: 11, color: '#9ca3af', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 2 }}>{c.label}</p>
+                  <p style={{ fontSize: 13, color: '#111827', fontWeight: 500 }}>{c.value}</p>
                 </div>
-              </div>
+              </a>
+            ))}
+
+            <div
+              style={{
+                padding: '16px 18px',
+                border: '1px solid #e5e7eb',
+                borderRadius: 10,
+                background: '#f9fafb',
+              }}
+            >
+              <p style={{ fontSize: 11, color: '#9ca3af', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 8 }}>Horário</p>
+              <p style={{ fontSize: 13, color: '#6b7280' }}>Seg–Sex: 9h às 18h</p>
+              <p style={{ fontSize: 13, color: '#6b7280' }}>Sábado: 9h às 12h</p>
             </div>
-          </AnimatedElement>
 
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+              style={{ justifyContent: 'space-between', padding: '14px 18px' }}
+            >
+              <span style={{ fontSize: 13 }}>Resposta em até 2h úteis</span>
+              <ArrowRight size={15} />
+            </a>
+          </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .contact-grid { grid-template-columns: 1fr !important; }
+          .form-row { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   );
 };

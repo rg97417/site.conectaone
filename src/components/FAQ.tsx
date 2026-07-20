@@ -1,77 +1,82 @@
-import { Plus, Minus } from 'lucide-react';
 import { useState } from 'react';
-import AnimatedElement from './AnimatedElement';
-import VisualEffects from './VisualEffects';
+import { Plus, Minus } from 'lucide-react';
+
+const faqs = [
+  {
+    question: "Como a IA pode beneficiar minha empresa?",
+    answer: "Nossa IA otimiza processos, reduz custos operacionais e aumenta a eficiência através de automação inteligente, análise preditiva e integração de sistemas. Clientes relatam redução de até 70% em custos operacionais.",
+  },
+  {
+    question: "Quanto tempo leva para implementar as soluções?",
+    answer: "Soluções básicas são implementadas em 2–3 semanas. Projetos mais complexos levam de 1–2 meses. Desenvolvemos um cronograma detalhado baseado nas suas necessidades específicas.",
+  },
+  {
+    question: "Preciso ter conhecimento técnico para usar as soluções?",
+    answer: "Não. Nossas soluções são desenvolvidas com foco na usabilidade, com interfaces intuitivas e treinamento completo para sua equipe. Oferecemos suporte contínuo para garantir o máximo aproveitamento.",
+  },
+  {
+    question: "Como é feito o suporte após a implementação?",
+    answer: "Oferecemos suporte técnico dedicado, monitoramento contínuo e manutenção preventiva. Nossa equipe está disponível para ajustes, melhorias e resolução de dúvidas.",
+  },
+  {
+    question: "As soluções podem ser personalizadas para meu negócio?",
+    answer: "Sim. Todas as nossas soluções são customizadas para atender às necessidades específicas do seu negócio. Realizamos análise detalhada dos seus processos e objetivos para desenvolver uma solução sob medida.",
+  },
+];
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const faqs = [
-    {
-      question: "Como a IA pode beneficiar minha empresa?",
-      answer: "Nossa IA pode otimizar processos, reduzir custos operacionais e aumentar a eficiência do seu negócio através de automação inteligente, análise preditiva e integração de sistemas. Clientes relatam redução de até 70% em custos operacionais e aumento significativo em produtividade."
-    },
-    {
-      question: "Quanto tempo leva para implementar as soluções?",
-      answer: "O tempo de implementação varia de acordo com a complexidade do projeto. Tipicamente, soluções básicas podem ser implementadas em 2-3 semanas, enquanto projetos mais complexos podem levar de 1-2 meses. Desenvolvemos um cronograma detalhado baseado nas suas necessidades específicas."
-    },
-    {
-      question: "Preciso ter conhecimento técnico para usar as soluções?",
-      answer: "Não. Nossas soluções são desenvolvidas com foco na usabilidade, com interfaces intuitivas e treinamento completo para sua equipe. Além disso, oferecemos suporte contínuo para garantir que você aproveite ao máximo nossas ferramentas."
-    },
-    {
-      question: "Como é feito o suporte após a implementação?",
-      answer: "Oferecemos suporte técnico dedicado, monitoramento contínuo e manutenção preventiva. Nossa equipe está sempre disponível para ajustes, melhorias e resolução de dúvidas, garantindo que sua solução continue funcionando com máxima eficiência."
-    },
-    {
-      question: "As soluções podem ser personalizadas para meu negócio?",
-      answer: "Sim. Todas as nossas soluções são customizadas para atender às necessidades específicas do seu negócio. Realizamos uma análise detalhada dos seus processos e objetivos para desenvolver uma solução sob medida que maximize os resultados."
-    }
-  ];
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="py-20 md:py-32 bg-gray-900 relative overflow-hidden">
-      <VisualEffects variant="tertiary" />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedElement>
-          <h2 className="section-title">
-            Perguntas <span className="text-conecta-400">Frequentes</span>
-          </h2>
-        </AnimatedElement>
-        
-        <AnimatedElement delay={200}>
-          <p className="section-subtitle mb-12">
-            Tire suas dúvidas sobre nossas soluções em Inteligência Artificial e como podemos ajudar seu negócio
-          </p>
-        </AnimatedElement>
+    <section
+      className="section"
+      style={{ background: '#f9fafb', borderTop: '1px solid #e5e7eb' }}
+    >
+      <div className="container-xl">
 
-        <div className="max-w-3xl mx-auto">
-          {faqs.map((faq, index) => (
-            <AnimatedElement key={index} delay={300 + index * 100}>
-              <div className="mb-4">
-                <button
-                  className="w-full flex items-center justify-between p-4 bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-700"
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                >
-                  <span className="text-left font-medium text-white">{faq.question}</span>
-                  {openIndex === index ? (
-                    <Minus className="h-5 w-5 text-conecta-600 flex-shrink-0" />
-                  ) : (
-                    <Plus className="h-5 w-5 text-conecta-600 flex-shrink-0" />
-                  )}
-                </button>
-                {openIndex === index && (
-                  <div className="p-4 bg-gray-800 border-t border-gray-700">
-                    <p className="text-gray-300">{faq.answer}</p>
-                  </div>
-                )}
-              </div>
-            </AnimatedElement>
+        <div style={{ marginBottom: 48 }}>
+          <span className="section-label">FAQ</span>
+          <h2 className="section-heading">Perguntas frequentes</h2>
+        </div>
+
+        <div style={{ maxWidth: 720 }}>
+          {faqs.map((faq, i) => (
+            <div key={i} style={{ borderTop: '1px solid #e5e7eb' }}>
+              <button
+                onClick={() => setOpen(open === i ? null : i)}
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: 16,
+                  padding: '20px 0',
+                  background: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                }}
+              >
+                <span style={{ fontSize: 15, fontWeight: 500, color: '#111827', letterSpacing: '-0.01em' }}>
+                  {faq.question}
+                </span>
+                {open === i
+                  ? <Minus size={16} style={{ color: '#9ca3af', flexShrink: 0 }} />
+                  : <Plus size={16} style={{ color: '#9ca3af', flexShrink: 0 }} />
+                }
+              </button>
+              {open === i && (
+                <p style={{ fontSize: 14, color: '#6b7280', lineHeight: 1.65, paddingBottom: 20 }}>
+                  {faq.answer}
+                </p>
+              )}
+            </div>
           ))}
+          <div style={{ borderTop: '1px solid #e5e7eb' }} />
         </div>
       </div>
     </section>
   );
 };
 
-export default FAQ; 
+export default FAQ;

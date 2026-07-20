@@ -1,148 +1,207 @@
 import { ArrowRight, Mail, Phone, Linkedin } from 'lucide-react';
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=5511974178200&text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+as+solu%C3%A7%C3%B5es+personalizadas+da+ConectaOne.&type=phone_number&app_absent=0";
+const whatsappUrl = "https://api.whatsapp.com/send/?phone=5511974178200&text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+as+solu%C3%A7%C3%B5es+personalizadas+da+ConectaOne.&type=phone_number&app_absent=0";
 
-  const solutions = [
-    'IA para Resultados Empresariais',
-    'Automação de Processos',
-    'Integração de Sistemas',
-    'Análise Preditiva',
-    'Atendimento Inteligente',
-    'SAP Business One',
-  ];
+const solutions = [
+  'IA para Empresas',
+  'Automação de Processos',
+  'Integração de Sistemas',
+  'Análise Preditiva',
+  'Atendimento Inteligente',
+  'SAP Business One',
+];
+
+const Footer = () => {
+  const year = new Date().getFullYear();
 
   return (
     <>
-      {/* ── CTA Final Section ── */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0"
-             style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.15) 0%, rgba(99,102,241,0.12) 50%, rgba(124,58,237,0.15) 100%)' }} />
-        <div className="absolute inset-0 grid-pattern opacity-50" />
-        <div className="orb w-[400px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30"
-             style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%)' }} />
-
-        <div className="section-container relative z-10 text-center">
-          <span className="badge-pill mb-6 inline-flex">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse-slow" />
-            Pronto para começar?
-          </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-            Automatize seu negócio{' '}
-            <span className="text-gradient">hoje mesmo</span>
-          </h2>
-          <p className="text-brand-muted text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-            Mais de 50 empresas já transformaram suas operações com a ConectaOne.
-            Sua vez de escalar com Inteligência Artificial.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"
-               className="btn-primary px-10 py-4 text-base">
-              Falar com Especialista
-              <ArrowRight className="ml-2 h-5 w-5" />
+      {/* Final CTA */}
+      <section
+        style={{
+          borderTop: '1px solid #e5e7eb',
+          background: '#f9fafb',
+          padding: '80px 0',
+        }}
+      >
+        <div
+          className="container-xl footer-cta"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: 32,
+          }}
+        >
+          <div>
+            <h2
+              style={{
+                fontSize: 'clamp(22px, 3.5vw, 36px)',
+                fontWeight: 700,
+                color: '#111827',
+                letterSpacing: '-0.03em',
+                lineHeight: 1.2,
+                marginBottom: 8,
+              }}
+            >
+              Pronto para automatizar seu negócio?
+            </h2>
+            <p style={{ fontSize: 15, color: '#6b7280' }}>
+              Mais de 50 empresas já escalaram resultados com a ConectaOne.
+            </p>
+          </div>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }} className="footer-cta-btns">
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
+              Falar com especialista
+              <ArrowRight size={16} />
             </a>
-            <a href="#services" className="btn-secondary px-10 py-4 text-base">
-              Ver Soluções
+            <a href="#services" className="btn btn-outline btn-lg">
+              Ver soluções
             </a>
           </div>
         </div>
       </section>
 
-      {/* ── Footer ── */}
-      <footer className="border-t border-white/8" style={{ background: '#090c18' }}>
-        <div className="section-container py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-
+      {/* Footer */}
+      <footer style={{ borderTop: '1px solid #e5e7eb', background: '#ffffff' }}>
+        <div className="container-xl" style={{ padding: '48px 24px 32px' }}>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '2fr 1fr 1fr',
+              gap: 48,
+              marginBottom: 40,
+            }}
+            className="footer-grid"
+          >
             {/* Brand */}
-            <div className="lg:col-span-2">
+            <div>
               <img
-                src="/logo-gradient-dark.svg"
+                src="/conectaone_logo_principal_1200.png"
                 alt="ConectaOne"
-                className="h-9 w-auto mb-5"
-                onError={e => {
-                  (e.currentTarget as HTMLImageElement).src = '/logo.png';
-                  (e.currentTarget as HTMLImageElement).className = 'h-9 w-auto mb-5 brightness-0 invert';
-                }}
+                style={{ height: 45, width: 'auto', marginBottom: 16 }}
               />
-              <p className="text-brand-muted text-sm leading-relaxed max-w-xs mb-6">
-                Transformamos empresas com Inteligência Artificial e automação inteligente.
-                Resultados mensuráveis desde os primeiros 90 dias.
+              <p style={{ fontSize: 13, color: '#6b7280', lineHeight: 1.65, maxWidth: 280, marginBottom: 20 }}>
+                Transformamos empresas com automação e inteligência artificial. Resultados mensuráveis desde os primeiros 90 dias.
               </p>
-              <div className="flex gap-3">
-                <a href="https://www.linkedin.com/company/conectaone" target="_blank" rel="noopener noreferrer"
-                   className="w-9 h-9 rounded-lg flex items-center justify-center text-brand-muted hover:text-white transition-all duration-200 hover:bg-brand-indigo/20"
-                   style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
-                  <Linkedin className="w-4 h-4" />
-                </a>
-                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"
-                   className="w-9 h-9 rounded-lg flex items-center justify-center text-brand-muted hover:text-white transition-all duration-200 hover:bg-green-500/20"
-                   style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.4 3.6C18.2 1.4 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.7 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.4-6.2-3.6-8.4z"/>
-                  </svg>
-                </a>
+              <div style={{ display: 'flex', gap: 8 }}>
+                {[
+                  { href: 'https://www.linkedin.com/company/conectaone', icon: <Linkedin size={15} />, label: 'LinkedIn' },
+                  { href: whatsappUrl, icon: (
+                    <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.4 3.6C18.2 1.4 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.7 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.4-6.2-3.6-8.4z"/>
+                    </svg>
+                  ), label: 'WhatsApp' },
+                ].map((s, i) => (
+                  <a
+                    key={i}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    style={{
+                      width: 34,
+                      height: 34,
+                      borderRadius: 8,
+                      border: '1px solid #e5e7eb',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#9ca3af',
+                      transition: 'color 0.15s, border-color 0.15s',
+                    }}
+                    onMouseEnter={e => {
+                      const el = e.currentTarget as HTMLAnchorElement;
+                      el.style.color = '#6b7280';
+                      el.style.borderColor = '#d1d5db';
+                    }}
+                    onMouseLeave={e => {
+                      const el = e.currentTarget as HTMLAnchorElement;
+                      el.style.color = '#9ca3af';
+                      el.style.borderColor = '#e5e7eb';
+                    }}
+                  >
+                    {s.icon}
+                  </a>
+                ))}
               </div>
             </div>
 
-            {/* Soluções */}
+            {/* Solutions */}
             <div>
-              <h4 className="font-bold text-white mb-5 text-sm tracking-wide" style={{ fontFamily: 'Exo 2, sans-serif' }}>
+              <p style={{ fontSize: 12, fontWeight: 600, color: '#111827', marginBottom: 16, letterSpacing: '-0.01em' }}>
                 Soluções
-              </h4>
-              <ul className="space-y-3">
-                {solutions.map((s, i) => (
+              </p>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {solutions.map((item, i) => (
                   <li key={i}>
-                    <a href="#services"
-                       className="text-sm text-brand-muted hover:text-white transition-colors duration-200">
-                      {s}
+                    <a
+                      href="#services"
+                      style={{ fontSize: 13, color: '#6b7280', transition: 'color 0.15s' }}
+                      onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = '#111827'}
+                      onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = '#6b7280'}
+                    >
+                      {item}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Contato */}
+            {/* Contact */}
             <div>
-              <h4 className="font-bold text-white mb-5 text-sm tracking-wide" style={{ fontFamily: 'Exo 2, sans-serif' }}>
+              <p style={{ fontSize: 12, fontWeight: 600, color: '#111827', marginBottom: 16, letterSpacing: '-0.01em' }}>
                 Contato
-              </h4>
-              <div className="space-y-4">
-                <a href="mailto:contato@conectaone.com"
-                   className="flex items-center gap-3 text-sm text-brand-muted hover:text-white transition-colors group">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-brand-indigo/20 transition-colors"
-                       style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <Mail className="w-3.5 h-3.5" />
-                  </div>
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <a
+                  href="mailto:contato@conectaone.com"
+                  style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: '#6b7280', transition: 'color 0.15s' }}
+                  onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = '#111827'}
+                  onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = '#6b7280'}
+                >
+                  <Mail size={13} />
                   contato@conectaone.com
                 </a>
-                <a href="tel:+5511974178200"
-                   className="flex items-center gap-3 text-sm text-brand-muted hover:text-white transition-colors group">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-brand-indigo/20 transition-colors"
-                       style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <Phone className="w-3.5 h-3.5" />
-                  </div>
+                <a
+                  href="tel:+5511974178200"
+                  style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: '#6b7280', transition: 'color 0.15s' }}
+                  onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = '#111827'}
+                  onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = '#6b7280'}
+                >
+                  <Phone size={13} />
                   +55 (11) 97417-8200
                 </a>
-              </div>
-              <div className="mt-6 p-4 rounded-xl" style={{ background: 'rgba(99,102,241,0.08)', border: '1px solid rgba(99,102,241,0.2)' }}>
-                <p className="text-xs text-brand-muted leading-relaxed">
-                  <strong className="text-white">Horário de atendimento:</strong><br />
-                  Seg–Sex: 9h às 18h<br />
-                  Sáb: 9h às 12h
-                </p>
+                <p style={{ fontSize: 12, color: '#9ca3af', marginTop: 4 }}>Seg–Sex: 9h às 18h</p>
               </div>
             </div>
           </div>
 
-          {/* Bottom bar */}
-          <div className="pt-8 border-t border-white/6 flex items-center justify-center">
-            <p className="text-xs text-brand-muted">
-              © {currentYear} ConectaOne. Todos os direitos reservados.
+          {/* Bottom */}
+          <div
+            style={{
+              borderTop: '1px solid #f3f4f6',
+              paddingTop: 24,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: 12,
+            }}
+          >
+            <p style={{ fontSize: 12, color: '#9ca3af' }}>
+              © {year} ConectaOne. Todos os direitos reservados.
             </p>
           </div>
         </div>
       </footer>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+        }
+      `}</style>
     </>
   );
 };

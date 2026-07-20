@@ -7,20 +7,39 @@ interface SEOProps {
 }
 
 const SEO = ({ 
-  title = "ConectaOne | Soluções em IA e Automação Inteligente para Empresas",
-  description = "Transforme seu negócio com soluções personalizadas em Inteligência Artificial. Automação de processos, integração de sistemas, análise preditiva e consultoria especializada em IA para aumentar produtividade e reduzir custos operacionais.",
-  canonical = "https://conectaone.com"
+  title = "ConectaOne | Consultoria SAP Business One & Soluções em IA",
+  description = "Acelere seu negócio com a ConectaOne. Especialistas em implantação SAP Business One, troca de consultoria, desenvolvimento de SaaS, CRM com IA e RPA (Power Automate) para empresas B2B.",
+  canonical = "https://conectaone.com.br"
 }: SEOProps) => {
   const keywords = [
-    "inteligência artificial empresas",
-    "automação inteligente",
-    "consultoria IA São Paulo",
-    "integração de sistemas",
-    "transformação digital",
-    "ConectaOne",
-    "SAP Business One",
+    "consultoria SAP Business One",
+    "trocar de consultoria SAP",
+    "implantação SAP B1",
+    "desenvolvimento de SaaS",
     "automação de processos",
+    "RPA",
+    "Power Automate",
+    "agentes de IA para vendas",
+    "inteligência artificial empresas",
+    "ConectaOne",
   ];
+
+  // Schema de Organização e B2B Service para SEO Local/Institucional
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "ConectaOne",
+    "url": "https://conectaone.com.br",
+    "logo": "https://conectaone.com.br/conectaone_logo_principal_1200.png",
+    "description": "Consultoria especializada em SAP Business One e desenvolvimento de soluções em Inteligência Artificial, RPA e Software Sob Medida (SaaS).",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "BR"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/conectaone"
+    ]
+  };
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -28,34 +47,26 @@ const SEO = ({
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Como a IA pode beneficiar minha empresa?",
+        "name": "Como trocar de consultoria SAP Business One?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Nossa IA pode otimizar processos, reduzir custos operacionais e aumentar a eficiência do seu negócio através de automação inteligente, análise preditiva e integração de sistemas. Clientes relatam redução de até 70% em custos operacionais e aumento significativo em produtividade."
+          "text": "A transição de consultoria SAP B1 para a ConectaOne é feita sem impacto na sua operação. Realizamos uma auditoria técnica do seu ambiente, estabilizamos processos críticos e assumimos a gestão com SLA rápido."
         }
       },
       {
         "@type": "Question",
-        "name": "Quanto tempo leva para implementar as soluções?",
+        "name": "Vocês desenvolvem SaaS e soluções customizadas?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "O tempo de implementação varia de acordo com a complexidade do projeto. Tipicamente, soluções básicas podem ser implementadas em 2-3 semanas, enquanto projetos mais complexos podem levar de 1-2 meses."
+          "text": "Sim. Desenvolvemos plataformas SaaS robustas, CRMs customizados e agentes de IA integrados ao seu ecossistema atual (inclusive SAP) para otimizar vendas e reduzir custos operacionais."
         }
       },
       {
         "@type": "Question",
-        "name": "Preciso ter conhecimento técnico para usar as soluções?",
+        "name": "Como a Automação e RPA podem ajudar minha empresa?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Não. Nossas soluções são desenvolvidas com foco na usabilidade, com interfaces intuitivas e treinamento completo para sua equipe. Além disso, oferecemos suporte contínuo."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Como é feito o suporte após a implementação?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Oferecemos suporte técnico dedicado, monitoramento contínuo e manutenção preventiva. Nossa equipe está sempre disponível para ajustes, melhorias e resolução de dúvidas."
+          "text": "Através de tecnologias como Power Automate e IA, eliminamos tarefas manuais e repetitivas no seu backoffice. Isso gera ROI imediato ao liberar sua equipe para atividades estratégicas."
         }
       },
       {
@@ -99,69 +110,8 @@ const SEO = ({
 
       {/* Metadados Estruturados - Schema.org */}
       <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "ConectaOne",
-          "url": canonical,
-          "logo": `${canonical}/logo.png`,
-          "description": description,
-          "sameAs": [
-            "https://www.linkedin.com/company/conectaone",
-            "https://www.instagram.com/conectaone"
-          ],
-          "foundingDate": "2024",
-          "numberOfEmployees": "2-10",
-          "industry": "Information Technology",
-          "serviceArea": {
-            "@type": "Country",
-            "name": "Brazil"
-          },
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Soluções em IA e Automação",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Inteligência Artificial Empresarial",
-                  "description": "Soluções de IA para otimização de processos empresariais"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Desenvolvimento de Plataformas",
-                  "description": "Criação de plataformas digitais e micro SaaS personalizados"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Automação de Processos",
-                  "description": "Automação inteligente para eliminar tarefas repetitivas"
-                }
-              }
-            ]
-          },
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+55-11-97417-8200",
-            "contactType": "customer service",
-            "areaServed": "BR",
-            "availableLanguage": "Portuguese"
-          },
-          "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "BR"
-          }
-        })}
+        {JSON.stringify(organizationSchema)}
       </script>
-
-      {/* FAQ Schema - Rich Results no Google */}
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </script>

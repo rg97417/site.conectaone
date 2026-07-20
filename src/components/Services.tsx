@@ -1,163 +1,109 @@
-import {
-  BrainCircuit,
-  Cpu,
-  GitMerge,
-  BarChart3,
-  Bot,
-  Layers,
-  Laptop,
-  Building2,
-  ArrowRight,
-} from 'lucide-react';
-import AnimatedElement from './AnimatedElement';
+import { CheckCircle2, ArrowRight } from 'lucide-react';
 
-const services = [
-  {
-    icon: <BrainCircuit className="h-6 w-6" />,
-    title: 'IA para Resultados Empresariais',
-    description:
-      'Transforme dados em decisões estratégicas. Automatizamos processos e identificamos oportunidades para aumentar receita e reduzir custos operacionais com IA de última geração.',
-    highlight: true,
-    color: '#60a5fa',
-  },
-  {
-    icon: <Cpu className="h-6 w-6" />,
-    title: 'Automação de Processos',
-    description:
-      'Elimine tarefas repetitivas e erros operacionais. Automatizamos seus fluxos de trabalho para liberar o potencial da sua equipe e garantir consistência nos resultados.',
-    color: '#a78bfa',
-  },
-  {
-    icon: <GitMerge className="h-6 w-6" />,
-    title: 'Integração de Sistemas',
-    description:
-      'Conecte todos os seus sistemas em uma plataforma inteligente, eliminando retrabalho, silos de dados e aumentando a produtividade de ponta a ponta.',
-    color: '#6ee7b7',
-  },
-  {
-    icon: <BarChart3 className="h-6 w-6" />,
-    title: 'Análise Preditiva',
-    description:
-      'Transforme dados em insights estratégicos. Tome decisões mais precisas com análises avançadas que antecipam tendências e comportamentos de mercado.',
-    color: '#fcd34d',
-  },
-  {
-    icon: <Bot className="h-6 w-6" />,
-    title: 'Atendimento Inteligente',
-    description:
-      'Melhore a experiência dos seus clientes com atendimento personalizado 24/7 e qualificação de leads por IA conversacional integrada ao WhatsApp e CRM.',
-    color: '#f9a8d4',
-  },
-  {
-    icon: <Layers className="h-6 w-6" />,
-    title: 'Plataformas & Micro SaaS',
-    description:
-      'Desenvolvemos plataformas digitais completas e micro SaaS personalizados. Arquitetura moderna, APIs robustas e interfaces intuitivas para monetizar seu conhecimento.',
-    color: '#60a5fa',
-  },
-  {
-    icon: <Laptop className="h-6 w-6" />,
-    title: 'Desenvolvimento Customizado',
-    description:
-      'Criamos soluções tecnológicas sob medida com foco em usabilidade, performance e resultados mensuráveis — do MVP ao produto escalável.',
-    color: '#a78bfa',
-  },
-  {
-    icon: <Building2 className="h-6 w-6" />,
-    title: 'SAP Business One',
-    description:
-      'Implementação, desenvolvimento de add-ons e integrações completas em SAP Business One. Maximize a eficiência operacional com o ERP integrado às mais modernas tecnologias de IA.',
-    color: '#6ee7b7',
-  },
+const sapServices = [
+  { title: 'Implantação Completa', desc: 'Mapeamento aderente, go-live seguro e aceleração do Retorno sobre Investimento (ROI) desde os primeiros meses.' },
+  { title: 'Suporte e Sustentação', desc: 'Atendimento técnico ágil e proativo para garantir estabilidade operacional e zero paradas sistêmicas.' },
+  { title: 'Reforma Tributária', desc: 'Consultoria e adequação completa do seu ambiente SAP Business One às novas exigências fiscais do Brasil.' },
+  { title: 'Integrações de Sistemas', desc: 'Unificação do seu ecossistema. Conectamos o SAP a CRMs, e-commerces, bancos e plataformas de logística.' },
+  { title: 'Customizações & Add-ons', desc: 'Desenvolvimento de softwares acoplados ao ERP e adequações via SDK para regras de negócio exclusivas.' },
+  { title: 'Gestão de Projetos', desc: 'Auditoria técnica, liderança e cronogramas previsíveis para garantir a entrega no prazo e no budget.' },
+];
+
+const aiSoftwareServices = [
+  { title: 'Plataformas Sob Medida', desc: 'Desenvolvimento de SaaS e sistemas web escaláveis para digitalizar operações complexas e gerar nova receita.' },
+  { title: 'IA para Triagem de Leads', desc: 'Assistentes autônomos que conversam, entendem e qualificam leads 24/7, entregando apenas oportunidades quentes.' },
+  { title: 'RPA & Power Automate', desc: 'Desenvolvimento de robôs de automação (RPA) para eliminar tarefas manuais e repetitivas em todo o seu backoffice.' },
+  { title: 'Sistemas para Times de Vendas', desc: 'Dashboards e CRMs customizados com rastreamento de KPIs em tempo real para controle absoluto da performance.' },
+  { title: 'Prospecção (Lead Scrapers)', desc: 'Extração, limpeza e enriquecimento automatizado de dados para escalar de forma cirúrgica o seu outbound B2B.' },
+  { title: 'IA de Atendimento', desc: 'Agentes conversacionais focados em retenção, suporte rápido e agendamento automático de reuniões.' },
 ];
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 md:py-32 relative overflow-hidden"
-             style={{ background: '#0e1220' }}>
-
-      {/* Subtle orb */}
-      <div className="orb w-[500px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30"
-           style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)' }} />
-
-      <div className="section-container relative z-10">
-
+    <section
+      id="services"
+      className="section"
+      style={{ background: '#f4f6f9', borderTop: '1px solid #e5e7eb' }}
+    >
+      <div className="container-xl">
         {/* Header */}
-        <AnimatedElement>
-          <p className="section-tag text-center">O que entregamos</p>
-          <h2 className="section-title">
-            Soluções <span className="text-gradient">Sob Medida</span>
-          </h2>
-        </AnimatedElement>
-
-        <AnimatedElement delay={150}>
-          <p className="section-subtitle mb-16">
-            Cada projeto é único. Desenvolvemos e implementamos tecnologia personalizada
-            para cada necessidade — com foco em impacto real e ROI mensurável.
+        <div style={{ marginBottom: 56, textAlign: 'center', maxWidth: 700, margin: '0 auto 64px' }}>
+          <span className="section-label" style={{ margin: '0 auto 16px' }}>O Que Entregamos</span>
+          <h2 className="section-heading" style={{ color: 'var(--navy)' }}>Duas frentes de especialidade.<br />Um único parceiro de tecnologia.</h2>
+          <p className="section-sub" style={{ margin: '0 auto' }}>
+            Atuamos de ponta a ponta: desde a estrutura robusta do SAP Business One até a inovação de agentes de Inteligência Artificial e softwares sob medida.
           </p>
-        </AnimatedElement>
-
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {services.map((s, i) => (
-            <AnimatedElement key={i} delay={100 + i * 60}>
-              <div
-                className={`group relative rounded-2xl p-6 h-full flex flex-col transition-all duration-300 cursor-default ${
-                  s.highlight ? 'ring-1 ring-brand-indigo/50' : ''
-                }`}
-                style={{
-                  background: s.highlight
-                    ? 'linear-gradient(135deg, rgba(37,99,235,0.12), rgba(99,102,241,0.08))'
-                    : 'rgba(255,255,255,0.03)',
-                  border: `1px solid ${s.highlight ? 'rgba(99,102,241,0.35)' : 'rgba(255,255,255,0.07)'}`,
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLDivElement).style.border = `1px solid ${s.color}55`;
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = `0 8px 32px ${s.color}20, 0 0 0 1px ${s.color}30`;
-                  (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLDivElement).style.border = `1px solid ${s.highlight ? 'rgba(99,102,241,0.35)' : 'rgba(255,255,255,0.07)'}`;
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = 'none';
-                  (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
-                }}
-              >
-                {/* Icon */}
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 flex-shrink-0"
-                     style={{ background: `${s.color}18`, border: `1px solid ${s.color}30`, color: s.color }}>
-                  {s.icon}
-                </div>
-
-                {/* Text */}
-                <h3 className="text-base font-bold text-white mb-3 leading-snug" style={{ fontFamily: 'Exo 2, sans-serif' }}>
-                  {s.title}
-                </h3>
-                <p className="text-sm text-brand-muted leading-relaxed flex-1">
-                  {s.description}
-                </p>
-
-                {s.highlight && (
-                  <div className="mt-4 pt-4 border-t border-brand-indigo/20">
-                    <span className="text-xs font-semibold text-brand-indigo/80 flex items-center gap-1">
-                      Mais solicitado <ArrowRight className="w-3 h-3" />
-                    </span>
-                  </div>
-                )}
-              </div>
-            </AnimatedElement>
-          ))}
         </div>
 
-        {/* Bottom CTA */}
-        <AnimatedElement delay={500}>
-          <div className="mt-16 text-center">
-            <a href="#contact" className="btn-primary px-10 py-4 text-base">
-              Solicitar Proposta Personalizada
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
+        {/* Dual Pillar Layout */}
+        <div className="services-grid" style={{ display: 'grid', gap: '32px' }}>
+          
+          {/* Pillar 1: SAP B1 */}
+          <div 
+            style={{ 
+              background: '#ffffff', 
+              borderRadius: 16, 
+              padding: '40px 32px', 
+              border: '1px solid #e5e7eb',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.03)'
+            }}
+          >
+            <div style={{ marginBottom: 32, paddingBottom: 16, borderBottom: '1px solid #e5e7eb' }}>
+              <h3 style={{ fontSize: 24, fontWeight: 700, color: 'var(--navy)', letterSpacing: '-0.02em', margin: 0 }}>
+                Consultoria SAP Business One
+              </h3>
+            </div>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+              {sapServices.map((s, i) => (
+                <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                  <CheckCircle2 size={20} color="var(--blue)" style={{ marginTop: 2, flexShrink: 0 }} />
+                  <div>
+                    <h4 style={{ fontSize: 16, fontWeight: 600, color: 'var(--navy)', marginBottom: 4 }}>{s.title}</h4>
+                    <p style={{ fontSize: 14, color: 'var(--muted)', lineHeight: 1.5, margin: 0 }}>{s.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </AnimatedElement>
+
+          {/* Pillar 2: AI & Software */}
+          <div 
+            style={{ 
+              background: '#ffffff', 
+              borderRadius: 16, 
+              padding: '40px 32px', 
+              border: '1px solid #e5e7eb',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.03)'
+            }}
+          >
+            <div style={{ marginBottom: 32, paddingBottom: 16, borderBottom: '1px solid #e5e7eb' }}>
+              <h3 style={{ fontSize: 24, fontWeight: 700, color: 'var(--navy)', letterSpacing: '-0.02em', margin: 0 }}>
+                IA, Automações & Software
+              </h3>
+            </div>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+              {aiSoftwareServices.map((s, i) => (
+                <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                  <CheckCircle2 size={20} color="var(--blue)" style={{ marginTop: 2, flexShrink: 0 }} />
+                  <div>
+                    <h4 style={{ fontSize: 16, fontWeight: 600, color: 'var(--navy)', marginBottom: 4 }}>{s.title}</h4>
+                    <p style={{ fontSize: 14, color: 'var(--muted)', lineHeight: 1.5, margin: 0 }}>{s.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
       </div>
+      
+      <style>{`
+        @media (min-width: 992px) {
+          .services-grid { grid-template-columns: 1fr 1fr; }
+        }
+      `}</style>
     </section>
   );
 };

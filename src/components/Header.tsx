@@ -1,115 +1,168 @@
 import { useState, useEffect } from 'react';
-import { cn } from '@/lib/utils';
-import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { label: 'Home',        href: '/' },
-  { label: 'Soluções',   href: '/#services' },
-  { label: 'Diferenciais', href: '/#why-choose-us' },
+  { label: 'Soluções',      href: '/#services' },
+  { label: 'SAP Business One', href: '/#services' },
+  { label: 'Diferenciais',  href: '/#why-choose-us' },
   { label: 'Como Funciona', href: '/#how-it-works' },
-  { label: 'Clientes',   href: '/#testimonials' },
+  { label: 'Clientes',      href: '/#testimonials' },
 ];
 
 const Header = () => {
-  const [isScrolled, setIsScrolled]         = useState(false);
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
     <header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-400',
-        isScrolled
-          ? 'py-3 border-b border-white/8'
-          : 'py-5',
-      )}
       style={{
-        background: isScrolled
-          ? 'rgba(12,15,30,0.88)'
-          : 'transparent',
-        backdropFilter: isScrolled ? 'blur(20px)' : 'none',
+        position: 'fixed',
+        top: 0, left: 0, right: 0,
+        zIndex: 50,
+
+        /* Resizable navbar: tall when at top, compact when scrolled */
+        height: scrolled ? 56 : 72,
+        display: 'flex',
+        alignItems: 'center',
+
+        background: scrolled
+          ? 'rgba(255,255,255,0.96)'
+          : 'rgba(255,255,255,0)',
+        backdropFilter: scrolled ? 'blur(14px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(14px)' : 'none',
+        borderBottom: scrolled ? '1px solid #e5e7eb' : '1px solid transparent',
+        transition: 'height 0.25s ease, background 0.25s ease, border-color 0.25s ease, backdrop-filter 0.25s ease',
+        boxShadow: scrolled ? '0 1px 8px rgba(0,0,0,0.04)' : 'none',
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+      <div className="container-xl" style={{ width: '100%' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
-          {/* Logo */}
-          <a href="/" className="flex items-center group">
+          {/* Logo — also resizes */}
+          <a href="/" style={{ display: 'flex', alignItems: 'center', transition: 'all 0.25s' }}>
             <img
-              src="/logo-gradient-dark.svg"
-              alt="ConectaOne — Soluções em IA e Automação"
-              className="h-9 md:h-10 w-auto transition-opacity duration-200 group-hover:opacity-85"
-              onError={e => {
-                // Fallback to original logo
-                (e.currentTarget as HTMLImageElement).src = '/logo.png';
-                (e.currentTarget as HTMLImageElement).className = 'h-9 md:h-10 w-auto brightness-0 invert transition-opacity duration-200 group-hover:opacity-85';
+              src="/conectaone_logo_principal_1200.png"
+              alt="ConectaOne"
+              style={{
+                height: scrolled ? 45 : 60,
+                width: 'auto',
+                transition: 'height 0.25s ease',
               }}
-              loading="eager"
             />
           </a>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6">
+          {/* Desktop nav */}
+          <nav style={{ display: 'flex', alignItems: 'center', gap: 2 }} className="hidden-mobile">
             {navLinks.map(l => (
               <a
-                key={l.href}
+                key={l.href + l.label}
                 href={l.href}
-                className="text-sm font-medium text-brand-muted hover:text-white transition-colors duration-200"
+                style={{
+                  padding: '6px 13px',
+                  fontSize: 14,
+                  color: '#6b7280',
+                  borderRadius: 6,
+                  transition: 'color 0.15s, background 0.15s',
+                  whiteSpace: 'nowrap',
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.color = '#111827';
+                  el.style.background = '#f3f4f6';
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLAnchorElement;
+                  el.style.color = '#6b7280';
+                  el.style.background = 'transparent';
+                }}
               >
                 {l.label}
               </a>
             ))}
             <a
               href="/#contact"
-              className="btn-primary text-sm px-5 py-2.5"
+              className="btn btn-primary"
+              style={{ marginLeft: 10, fontSize: 13 }}
             >
-              Contato
+              Falar com especialista
             </a>
           </nav>
 
-          {/* Mobile toggle */}
+          {/* Mobile hamburger */}
           <button
-            className="md:hidden text-brand-muted hover:text-white transition-colors p-1"
-            onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
+            className="show-mobile"
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{
+              background: 'transparent',
+              border: '1px solid #d1d5db',
+              borderRadius: 6,
+              width: 36,
+              height: 36,
+              cursor: 'pointer',
+              color: '#6b7280',
+              display: 'none',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: 16,
+            }}
+            aria-label="Menu"
           >
-            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            {menuOpen ? '✕' : '☰'}
           </button>
         </div>
-      </div>
 
-      {/* Mobile menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 border-t border-white/8"
-             style={{ background: 'rgba(12,15,30,0.97)', backdropFilter: 'blur(20px)' }}>
-          <div className="flex flex-col px-4 py-4 gap-1">
+        {/* Mobile menu dropdown */}
+        {menuOpen && (
+          <div
+            style={{
+              position: 'absolute',
+              top: scrolled ? 56 : 72,
+              left: 0, right: 0,
+              background: 'rgba(255,255,255,0.98)',
+              backdropFilter: 'blur(14px)',
+              borderBottom: '1px solid #e5e7eb',
+              padding: '12px 24px 24px',
+            }}
+          >
             {navLinks.map(l => (
               <a
-                key={l.href}
+                key={l.href + l.label}
                 href={l.href}
-                className="px-4 py-3 text-base font-medium text-brand-muted hover:text-white hover:bg-white/4 rounded-xl transition-all duration-150"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  display: 'block',
+                  padding: '13px 0',
+                  fontSize: 15,
+                  color: '#6b7280',
+                  borderBottom: '1px solid #f3f4f6',
+                }}
               >
                 {l.label}
               </a>
             ))}
-            <div className="pt-2 border-t border-white/8 mt-2">
-              <a
-                href="/#contact"
-                className="btn-primary w-full justify-center py-3 text-base"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Contato
-              </a>
-            </div>
+            <a
+              href="/#contact"
+              onClick={() => setMenuOpen(false)}
+              className="btn btn-primary"
+              style={{ marginTop: 16, width: '100%', justifyContent: 'center' }}
+            >
+              Falar com especialista
+            </a>
           </div>
-        </div>
-      )}
+        )}
+      </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .hidden-mobile { display: none !important; }
+          .show-mobile { display: flex !important; }
+        }
+      `}</style>
     </header>
   );
 };

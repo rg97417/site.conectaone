@@ -2,75 +2,52 @@ import { ArrowUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const ScrollToTop = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  // Controla a visibilidade do botão e o progresso do scroll
-  const handleScroll = () => {
-    const scrollTop = window.pageYOffset;
-    const winHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (scrollTop / winHeight) * 100;
-    
-    setScrollProgress(scrolled);
-    setIsVisible(scrolled > 10);
-  };
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setVisible(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
-
-  if (!isVisible) return null;
+  if (!visible) return null;
 
   return (
-    <div className="fixed bottom-6 right-24 z-50">
-      <div className="relative">
-        {/* Círculo de progresso */}
-        <svg
-          className="w-12 h-12 transform -rotate-90"
-          viewBox="0 0 100 100"
-        >
-          <circle
-            className="text-gray-200"
-            strokeWidth="8"
-            stroke="currentColor"
-            fill="transparent"
-            r="40"
-            cx="50"
-            cy="50"
-          />
-          <circle
-            className="text-conecta-600 transition-all duration-300"
-            strokeWidth="8"
-            strokeDasharray={251.2}
-            strokeDashoffset={251.2 - (scrollProgress / 100) * 251.2}
-            strokeLinecap="round"
-            stroke="currentColor"
-            fill="transparent"
-            r="40"
-            cx="50"
-            cy="50"
-          />
-        </svg>
-        
-        {/* Botão */}
-        <button
-          onClick={scrollToTop}
-          className="absolute inset-0 flex items-center justify-center bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group"
-          aria-label="Voltar ao topo"
-        >
-          <ArrowUp className="h-5 w-5 text-conecta-600 group-hover:text-conecta-700 transition-colors" />
-        </button>
-      </div>
-    </div>
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      aria-label="Voltar ao topo"
+      style={{
+        position: 'fixed',
+        bottom: 24,
+        right: 84,
+        zIndex: 50,
+        width: 36,
+        height: 36,
+        borderRadius: 8,
+        background: '#ffffff',
+        border: '1px solid #d1d5db',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: 'pointer',
+        color: '#9ca3af',
+        transition: 'color 0.15s, border-color 0.15s',
+        boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
+      }}
+      onMouseEnter={e => {
+        const el = e.currentTarget as HTMLButtonElement;
+        el.style.color = '#374151';
+        el.style.borderColor = '#9ca3af';
+      }}
+      onMouseLeave={e => {
+        const el = e.currentTarget as HTMLButtonElement;
+        el.style.color = '#9ca3af';
+        el.style.borderColor = '#d1d5db';
+      }}
+    >
+      <ArrowUp size={14} />
+    </button>
   );
 };
 
-export default ScrollToTop; 
+export default ScrollToTop;

@@ -1,73 +1,131 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import BlogCard from './BlogCard';
-import AnimatedElement from './AnimatedElement';
-import VisualEffects from './VisualEffects';
+import { blogPosts } from '@/data/blogPosts';
 
 const BlogSection = () => {
-  // Posts em destaque (serão gerados por IA)
-  const featuredPosts = [
-    {
-      title: "Inteligência Artificial na Automação de Processos",
-      description: "Como a IA está transformando a maneira como as empresas automatizam seus processos e aumentam sua eficiência operacional.",
-      category: "Automação",
-      slug: "ia-automacao-processos"
-    },
-    {
-      title: "Integração de Sistemas com IA",
-      description: "Descubra como a integração inteligente de sistemas pode revolucionar a comunicação entre diferentes ferramentas e departamentos.",
-      category: "Integração",
-      slug: "integracao-sistemas-ia"
-    },
-    {
-      title: "O Futuro da IA nos Negócios",
-      description: "As principais tendências e inovações em IA que estão moldando o futuro dos negócios e da transformação digital.",
-      category: "Tendências",
-      slug: "futuro-ia-negocios"
-    }
-  ];
+  // Get the 3 most recent posts
+  const recentPosts = blogPosts.slice(0, 3);
 
   return (
-    <section className="py-20 md:py-32 bg-gray-900 relative overflow-hidden">
-      <VisualEffects variant="secondary" />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedElement>
-          <div className="flex justify-between items-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              Insights <span className="text-conecta-400">& Novidades</span>
-            </h2>
-            <Link
-              to="/blog"
-              className="hidden sm:inline-flex items-center text-conecta-400 hover:text-conecta-300 font-medium transition-colors"
-            >
-              Ver mais insights
-              <ArrowRight className="ml-1 h-5 w-5" />
-            </Link>
-          </div>
-        </AnimatedElement>
+    <section
+      className="section"
+      style={{ background: '#ffffff', borderTop: '1px solid #e5e7eb' }}
+    >
+      <div className="container-xl">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredPosts.map((post, index) => (
-            <AnimatedElement key={post.slug} delay={200 + index * 100}>
-              <BlogCard {...post} />
-            </AnimatedElement>
-          ))}
+        {/* Header */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'flex-end',
+            justifyContent: 'space-between',
+            marginBottom: 48,
+            flexWrap: 'wrap',
+            gap: 16,
+          }}
+        >
+          <div>
+            <span className="section-label">Blog</span>
+            <h2 className="section-heading" style={{ marginBottom: 0 }}>Insights & recursos</h2>
+          </div>
+          <Link
+            to="/blog"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              fontSize: 13,
+              color: '#9ca3af',
+              transition: 'color 0.15s',
+            }}
+            onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = '#6b7280'}
+            onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = '#9ca3af'}
+          >
+            Ver todos
+            <ArrowRight size={14} />
+          </Link>
         </div>
 
-        <AnimatedElement delay={500}>
-          <div className="text-center mt-8 sm:hidden">
+        {/* Grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            border: '1px solid #e5e7eb',
+            borderRadius: 12,
+            overflow: 'hidden',
+          }}
+          className="blog-grid"
+        >
+          {recentPosts.map((post, i) => (
             <Link
-              to="/blog"
-              className="inline-flex items-center text-conecta-400 hover:text-conecta-300 font-medium transition-colors"
+              key={post.slug}
+              to={`/blog/${post.slug}`}
+              style={{
+                display: 'block',
+                padding: '28px 24px',
+                borderRight: i < recentPosts.length - 1 ? '1px solid #e5e7eb' : 'none',
+                background: '#ffffff',
+                transition: 'background 0.15s',
+                textDecoration: 'none',
+              }}
+              onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.background = '#f9fafb'}
+              onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.background = '#ffffff'}
             >
-              Ver mais insights
-              <ArrowRight className="ml-1 h-5 w-5" />
+              <span
+                style={{
+                  display: 'inline-block',
+                  fontSize: 11,
+                  fontWeight: 500,
+                  color: '#9ca3af',
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  marginBottom: 14,
+                  fontFamily: 'monospace',
+                }}
+              >
+                {post.category}
+              </span>
+              <h3
+                style={{
+                  fontSize: 15,
+                  fontWeight: 600,
+                  color: '#111827',
+                  letterSpacing: '-0.01em',
+                  lineHeight: 1.4,
+                  marginBottom: 10,
+                }}
+              >
+                {post.title}
+              </h3>
+              <p style={{ fontSize: 13, color: '#6b7280', lineHeight: 1.65, marginBottom: 20 }}>
+                {post.excerpt}
+              </p>
+              <span
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 4,
+                  fontSize: 13,
+                  color: '#9ca3af',
+                }}
+              >
+                Ler artigo <ArrowRight size={13} />
+              </span>
             </Link>
-          </div>
-        </AnimatedElement>
+          ))}
+        </div>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .blog-grid { grid-template-columns: 1fr !important; }
+          .blog-grid a { border-right: none !important; border-bottom: 1px solid #e5e7eb; }
+          .blog-grid a:last-child { border-bottom: none; }
+        }
+      `}</style>
     </section>
   );
 };
 
-export default BlogSection; 
+export default BlogSection;

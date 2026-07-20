@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Pages -->
   <url>
-    <loc>https://conectaone.com/</loc>
-    <lastmod>2026-03-13</lastmod>
+    <loc>https://conectaone.com.br/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/#services</loc>
-    <lastmod>2026-03-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://conectaone.com.br/blog</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Blog Posts -->
   <url>
-    <loc>https://conectaone.com/#how-it-works</loc>
-    <lastmod>2026-03-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://conectaone.com/#faq</loc>
-    <lastmod>2026-03-13</lastmod>
+    <loc>https://conectaone.com.br/blog/como-trocar-de-consultoria-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/#contact</loc>
-    <lastmod>2026-03-13</lastmod>
+    <loc>https://conectaone.com.br/blog/rpa-power-automate-reduzindo-trabalho-manual</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
-</urlset> 
+  <url>
+    <loc>https://conectaone.com.br/blog/reforma-tributaria-sap-business-one</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com.br/blog/como-criar-um-saas-b2b-com-ia</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
