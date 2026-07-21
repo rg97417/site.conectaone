@@ -57,13 +57,26 @@ const Contact = () => {
     e.preventDefault();
     setStatus('submitting');
     try {
-      await fetch('https://n8n.galhardo.online/webhook/40b563ec-3012-4ed1-bea5-ec46dadd0130', {
-        method: 'POST', mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ 
+          ...form, 
+          access_key: '5bf5e142-4ea4-46ec-9a0c-935919910ec9' 
+        }),
       });
-      setStatus('success');
-      setForm({ name: '', email: '', phone: '', company: '', message: '' });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        setStatus('success');
+        setForm({ name: '', email: '', phone: '', company: '', message: '' });
+      } else {
+        setStatus('error');
+      }
       setTimeout(() => setStatus('idle'), 5000);
     } catch {
       setStatus('error');
