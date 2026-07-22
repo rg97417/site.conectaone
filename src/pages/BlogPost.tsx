@@ -1,10 +1,12 @@
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { ArrowLeft, Clock, User, Calendar } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import { Helmet } from 'react-helmet-async';
 import SEO from '@/components/SEO';
 import { blogPosts } from '@/data/blogPosts';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import BlogCTA from '@/components/BlogCTA';
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -28,6 +30,32 @@ const BlogPost = () => {
         description={post.excerpt}
         canonical={`https://conectaone.com/blog/${post.slug}`}
       />
+      
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": post.title,
+            "description": post.excerpt,
+            "image": "https://conectaone.com/og-image.png",
+            "author": {
+              "@type": "Organization",
+              "name": post.author
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "ConectaOne",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://conectaone.com/conectaone_logo_principal_1200.png"
+              }
+            },
+            "datePublished": post.date,
+            "dateModified": post.date
+          })}
+        </script>
+      </Helmet>
       
       <Header />
 
@@ -72,7 +100,23 @@ const BlogPost = () => {
 
           {/* Post Content */}
           <div className="p-8 md:p-12 prose prose-lg prose-blue max-w-none text-[#5B6472]">
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+            {(() => {
+              // Split content by double newlines to get logical blocks/paragraphs
+              const blocks = post.content.trim().split('\n\n');
+              // Find the middle to inject the CTA naturally
+              const midIndex = Math.max(2, Math.ceil(blocks.length / 2));
+              
+              const firstHalf = blocks.slice(0, midIndex).join('\n\n');
+              const secondHalf = blocks.slice(midIndex).join('\n\n');
+
+              return (
+                <>
+                  <ReactMarkdown>{firstHalf}</ReactMarkdown>
+                  <BlogCTA />
+                  <ReactMarkdown>{secondHalf}</ReactMarkdown>
+                </>
+              );
+            })()}
           </div>
           
           {/* Post Footer / CTA */}

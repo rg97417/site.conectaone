@@ -47,7 +47,7 @@
     <loc>https://conectaone.com/blog/atendimento-automatizado-ia-generativa</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  <url>
+  </url>
     <loc>https://conectaone.com/blog/integracao-sap-business-one-ecommerce</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -59,6 +59,31 @@
   </url>
   <url>
     <loc>https://conectaone.com/blog/ia-rh-onboarding-recrutamento</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/quanto-custa-implementar-sap-business-one</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/power-automate-vs-uipath-qual-escolher</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/integracao-whatsapp-api-sap-business-one</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/fechamento-fiscal-lento-ia-rpa-sap</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/desenvolvimento-saas-vs-erp-prateleira</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
