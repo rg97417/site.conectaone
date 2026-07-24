@@ -48,6 +48,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
     <loc>https://conectaone.com/blog/integracao-sap-business-one-ecommerce</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -84,6 +85,31 @@
   </url>
   <url>
     <loc>https://conectaone.com/blog/desenvolvimento-saas-vs-erp-prateleira</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/consultoria-sap-business-one-ia-implementacao</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/inteligencia-artificial-empresas-reducao-custos-2024</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/como-fazer-agente-ia-atendimento-vendas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/automacao-processos-empresariais-power-automate-ia</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/modulos-sap-business-one-versao-11-mitos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
