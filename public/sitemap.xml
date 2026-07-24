@@ -113,4 +113,24 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://conectaone.com/blog/sap-business-one-vs-totvs-protheus-erp-brasil</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/migracao-erp-omie-conta-azul-sap-business-one</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/reforma-tributaria-2024-preparacao-erp-sap-b1</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://conectaone.com/blog/integracao-sap-business-one-crm-salesforce-hubspot</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

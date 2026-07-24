@@ -16,6 +16,16 @@ const BlogPost = () => {
     return <Navigate to="/" replace />;
   }
 
+  // Related posts logic
+  const relatedPosts = [...blogPosts]
+    .filter(p => p.id !== post.id)
+    .sort((a, b) => {
+      if (a.category === post.category && b.category !== post.category) return -1;
+      if (b.category === post.category && a.category !== post.category) return 1;
+      return parseInt(b.id) - parseInt(a.id);
+    })
+    .slice(0, 3);
+
   // Formatting date
   const formattedDate = new Date(post.date).toLocaleDateString('pt-BR', {
     day: '2-digit',
@@ -117,6 +127,19 @@ const BlogPost = () => {
                 </>
               );
             })()}
+          </div>
+          
+          {/* Related Articles (Internal Linking) */}
+          <div className="p-8 md:p-12 border-t border-gray-100 bg-gray-50">
+            <h3 className="text-2xl font-bold text-[#0B1220] mb-6">Leia também</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {relatedPosts.map(related => (
+                <Link key={related.id} to={`/blog/${related.slug}`} className="group block bg-white rounded-xl p-5 border border-gray-100 hover:shadow-md transition-shadow">
+                  <span className="text-xs font-bold text-blue-600 uppercase tracking-wider mb-2 block">{related.category}</span>
+                  <h4 className="text-lg font-bold text-[#0B1220] group-hover:text-blue-600 transition-colors line-clamp-3">{related.title}</h4>
+                </Link>
+              ))}
+            </div>
           </div>
           
           {/* Post Footer / CTA */}
