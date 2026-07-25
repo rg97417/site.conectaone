@@ -42,7 +42,7 @@ const BlogCTA = () => {
   };
 
   return (
-    <div className="my-10 p-8 md:p-10 bg-gradient-to-br from-[#0B1220] to-[#1a2b4c] rounded-2xl shadow-xl text-white relative overflow-hidden">
+    <div className="not-prose my-10 p-8 md:p-10 bg-gradient-to-br from-[#0B1220] to-[#1a2b4c] rounded-2xl shadow-xl text-white relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-blue-600 opacity-20 blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-48 h-48 rounded-full bg-blue-400 opacity-10 blur-3xl pointer-events-none"></div>

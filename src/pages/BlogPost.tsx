@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { ArrowLeft, Clock, User, Calendar } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
@@ -11,6 +12,11 @@ import BlogCTA from '@/components/BlogCTA';
 const BlogPost = () => {
   const { slug } = useParams();
   const post = blogPosts.find(p => p.slug === slug);
+
+  // Scroll to top when slug changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   if (!post) {
     return <Navigate to="/" replace />;
