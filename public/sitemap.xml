@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Core Pages -->
   <url>
     <loc>https://conectaone.com/</loc>
     <changefreq>weekly</changefreq>
@@ -11,8 +10,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Blog Posts -->
   <url>
     <loc>https://conectaone.com/blog/como-trocar-de-consultoria-sap-business-one</loc>
     <changefreq>monthly</changefreq>
@@ -110,26 +107,6 @@
   </url>
   <url>
     <loc>https://conectaone.com/blog/modulos-sap-business-one-versao-11-mitos</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://conectaone.com/blog/sap-business-one-vs-totvs-protheus-erp-brasil</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://conectaone.com/blog/migracao-erp-omie-conta-azul-sap-business-one</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://conectaone.com/blog/reforma-tributaria-2024-preparacao-erp-sap-b1</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://conectaone.com/blog/integracao-sap-business-one-crm-salesforce-hubspot</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

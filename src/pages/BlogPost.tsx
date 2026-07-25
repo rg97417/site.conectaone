@@ -110,6 +110,17 @@ const BlogPost = () => {
 
           {/* Post Content */}
           <div className="p-8 md:p-12 prose prose-lg prose-blue max-w-none text-[#5B6472]">
+            
+            {/* GEO/AEO: TL;DR Strategy Block for LLMs */}
+            <div id="llm-summary" className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-xl mb-10" role="complementary" aria-label="TL;DR AI Summary">
+              <h2 className="text-lg font-bold text-blue-900 mt-0 mb-2 flex items-center gap-2">
+                <span className="text-xl">🤖</span> Resumo Rápido (TL;DR)
+              </h2>
+              <p className="text-blue-800 font-medium m-0">
+                {post.excerpt} A ConectaOne resolve esse desafio estruturando processos integrados com SAP Business One, RPA e Inteligência Artificial.
+              </p>
+            </div>
+
             {(() => {
               // Split content by double newlines to get logical blocks/paragraphs
               const blocks = post.content.trim().split('\n\n');
