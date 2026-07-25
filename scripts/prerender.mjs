@@ -1,72 +1,101 @@
-import puppeteer from 'puppeteer';
-import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const distDir = path.resolve(rootDir, 'dist');
 const dataFile = path.resolve(rootDir, 'src/data/blogPosts.ts');
+const tempDir = path.resolve(__dirname, 'temp');
 
 async function run() {
-  console.log('Starting Prerendering process...');
+  console.log('Starting Native SSG Prerendering process...');
   
   if (!fs.existsSync(distDir)) {
     console.error('dist directory not found. Please run npm run build first.');
     process.exit(1);
   }
 
-  // 1. Extract slugs from blogPosts.ts using regex to avoid ts-node
-  const dataContent = fs.readFileSync(dataFile, 'utf-8');
-  const slugRegex = /slug:\s*'([^']+)'/g;
-  let match;
-  const slugs = [];
-  while ((match = slugRegex.exec(dataContent)) !== null) {
-    slugs.push(match[1]);
+  // 1. Compile blogPosts.ts to JS so we can import it
+  console.log('Extracting blog data...');
+  if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir);
+  execSync(`npx tsc ${dataFile} --outDir ${tempDir} --esModuleInterop --module Node16`);
+  
+  // Import the compiled JS file
+  const compiledFile = path.join(tempDir, 'blogPosts.js');
+  const { blogPosts } = await import(`file://${compiledFile}`);
+
+  // 2. Read the base index.html
+  const baseHtmlPath = path.resolve(distDir, 'index.html');
+  const baseHtml = fs.readFileSync(baseHtmlPath, 'utf-8');
+
+  console.log(`Found ${blogPosts.length} posts to prerender.`);
+
+  for (const post of blogPosts) {
+    const route = `/blog/${post.slug}`;
+    console.log(`Prerendering ${route} ...`);
+    
+    // Create SEO-friendly HTML string
+    let html = baseHtml;
+    
+    // Replace Meta Tags
+    html = html.replace(/<title>.*<\/title>/, `<title>${post.title} | Blog ConectaOne</title>`);
+    html = html.replace(/<meta name="description" content="[^"]*"/, `<meta name="description" content="${post.excerpt}"`);
+    
+    // Inject JSON-LD
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "image": "https://conectaone.com/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": post.author
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ConectaOne",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://conectaone.com/conectaone_logo_principal_1200.png"
+        }
+      },
+      "datePublished": post.date
+    };
+    
+    const jsonLdScript = `\n    <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`;
+    html = html.replace('</head>', `${jsonLdScript}\n  </head>`);
+    
+    // Inject Content into <div id="root">
+    const seoContent = `
+      <div id="root">
+        <!-- SEO PRERENDERED CONTENT -->
+        <article>
+          <h1>${post.title}</h1>
+          <p><strong>TL;DR:</strong> ${post.excerpt}</p>
+          <div>
+            ${post.content}
+          </div>
+        </article>
+      </div>`;
+    
+    html = html.replace('<div id="root"></div>', seoContent);
+
+    // Save HTML to dist folder
+    const routeDir = path.join(distDir, 'blog', post.slug);
+    if (!fs.existsSync(routeDir)) {
+      fs.mkdirSync(routeDir, { recursive: true });
+    }
+    fs.writeFileSync(path.join(routeDir, 'index.html'), html);
   }
 
-  const routes = ['/', '/blog', ...slugs.map(slug => `/blog/${slug}`)];
-  console.log(`Found ${routes.length} routes to prerender.`);
-
-  // 2. Start Express server to serve the dist folder
-  const app = express();
-  app.use(express.static(distDir));
-  app.use((req, res) => {
-    res.sendFile(path.resolve(distDir, 'index.html'));
-  });
-
-  const server = app.listen(3001, async () => {
-    console.log('Express server listening on port 3001');
-
-    // 3. Launch Puppeteer
-    const browser = await puppeteer.launch({ headless: 'new' });
-    const page = await browser.newPage();
-
-    for (const route of routes) {
-      console.log(`Prerendering ${route} ...`);
-      await page.goto(`http://localhost:3001${route}`, { waitUntil: 'networkidle0' });
-      
-      // Get the full HTML
-      let html = await page.evaluate(() => document.documentElement.outerHTML);
-      html = `<!DOCTYPE html>\n<html lang="pt-BR">\n${html}\n</html>`;
-
-      // 4. Save HTML to dist folder
-      const routeDir = path.join(distDir, route);
-      if (!fs.existsSync(routeDir)) {
-        fs.mkdirSync(routeDir, { recursive: true });
-      }
-      fs.writeFileSync(path.join(routeDir, 'index.html'), html);
-    }
-
-    console.log('Closing browser and server...');
-    await browser.close();
-    server.close();
-
-    // 5. Auto-generate sitemap.xml
-    console.log('Generating dynamic sitemap.xml...');
-    const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+  // 3. Auto-generate sitemap.xml
+  console.log('Generating dynamic sitemap.xml...');
+  const slugs = blogPosts.map(p => p.slug);
+  const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://conectaone.com/</loc>
@@ -84,13 +113,14 @@ ${slugs.map(slug => `  <url>
     <priority>0.7</priority>
   </url>`).join('\n')}
 </urlset>`;
-    
-    fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapContent);
-    // Also update the public folder so it's kept in source control
-    fs.writeFileSync(path.join(rootDir, 'public/sitemap.xml'), sitemapContent);
+  
+  fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapContent);
+  fs.writeFileSync(path.join(rootDir, 'public/sitemap.xml'), sitemapContent);
 
-    console.log('Prerendering and Sitemap complete! ✅');
-  });
+  // Clean up
+  fs.rmSync(tempDir, { recursive: true, force: true });
+
+  console.log('Native Prerendering and Sitemap complete! ✅');
 }
 
 run().catch(err => {
