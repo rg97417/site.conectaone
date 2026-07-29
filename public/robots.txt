@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # GEO/AEO (Generative Engine Optimization) - ConectaOne Explicit AI Allowance
 

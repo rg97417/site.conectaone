@@ -1,0 +1,25 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://conectaone.com/api",
+      "service-desc": [
+        {
+          "href": "https://conectaone.com/openapi.json",
+          "type": "application/vnd.oai.openapi+json;version=3.1"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://conectaone.com/llms.txt",
+          "type": "text/plain"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://conectaone.com/api/status",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}

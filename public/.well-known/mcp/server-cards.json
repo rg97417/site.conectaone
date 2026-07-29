@@ -1,0 +1,27 @@
+[
+  {
+    "$schema": "https://modelcontextprotocol.io/schema/server-card.json",
+    "serverInfo": {
+      "name": "ConectaOne Innovation MCP",
+      "version": "1.0.0",
+      "description": "Servidor MCP da ConectaOne para descoberta de soluções de inovação, IA, ESG e contatos no ecossistema corporativo."
+    },
+    "transport": {
+      "type": "sse",
+      "url": "https://conectaone.com/api/mcp/sse"
+    },
+    "capabilities": {
+      "tools": {
+        "listChanged": false
+      },
+      "resources": {
+        "subscribe": false,
+        "listChanged": false
+      },
+      "prompts": {
+        "listChanged": false
+      }
+    },
+    "documentationUrl": "https://conectaone.com/llms.txt"
+  }
+]

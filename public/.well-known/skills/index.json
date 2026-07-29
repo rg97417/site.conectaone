@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "skills": [
+    {
+      "name": "conectaone-innovation-discovery",
+      "type": "agent-skill",
+      "description": "Descubra e consulte serviços de inovação, ecossistema corporativo, consultoria de IA e transformação digital da ConectaOne.",
+      "url": "https://conectaone.com/llms.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "conectaone-contact-api",
+      "type": "api-tool",
+      "description": "Ferramenta para contato e envio de propostas para a equipe ConectaOne.",
+      "url": "https://conectaone.com/openapi.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
