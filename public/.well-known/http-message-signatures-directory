@@ -1,0 +1,19 @@
+{
+  "keys": [
+    {
+      "kty": "EC",
+      "crv": "P-256",
+      "alg": "ES256",
+      "use": "sig",
+      "kid": "conectaone-agent-key-2025",
+      "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
+      "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0"
+    }
+  ],
+  "@context": "https://www.w3.org/ns/http-sig-dir/v1",
+  "id": "https://conectaone.com/.well-known/http-message-signatures-directory",
+  "type": "HttpSignatureDirectory",
+  "owner": "https://conectaone.com",
+  "description": "ConectaOne Web Bot Auth — Diretório de assinaturas de mensagens HTTP para verificação de agentes e bots autorizados.",
+  "contact": "innovation@conectaone.com"
+}

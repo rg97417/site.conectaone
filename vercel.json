@@ -7,7 +7,7 @@
       "headers": [
         {
           "key": "Link",
-          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\", </.well-known/mcp/server-card.json>; rel=\"mcp-server-card\", </llms.txt>; rel=\"service-doc\", </auth.md>; rel=\"agent-auth\", </openapi.json>; rel=\"service-desc\""
+          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </.well-known/agent-skills/index.json>; rel=\"agent-skills\", </.well-known/mcp/server-card.json>; rel=\"mcp-server-card\", </llms.txt>; rel=\"service-doc\", </auth.md>; rel=\"agent-auth\", </openapi.json>; rel=\"service-desc\", </.well-known/http-message-signatures-directory>; rel=\"http-sig-dir\""
         },
         {
           "key": "Access-Control-Allow-Origin",
@@ -77,6 +77,13 @@
       "source": "/openapi.json",
       "headers": [
         { "key": "Content-Type", "value": "application/vnd.oai.openapi+json; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/.well-known/http-message-signatures-directory",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json; charset=utf-8" },
         { "key": "Access-Control-Allow-Origin", "value": "*" }
       ]
     }
