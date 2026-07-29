@@ -1,13 +1,14 @@
 /**
- * Cloudflare Pages Middleware – Content Negotiation for AI Agents (RFC 7231)
+ * Vercel Edge Middleware — Content Negotiation for AI Agents (RFC 7231)
  *
  * When a request arrives with `Accept: text/markdown`, instead of returning the
  * standard HTML page we return a Markdown version of the site content so that
  * AI agents, LLMs and scrapers get a structured, token-efficient document.
- *
- * Deployment: this file lives at functions/_middleware.js and is automatically
- * picked up by Cloudflare Pages as an "on-request" middleware for all routes.
  */
+
+export const config = {
+  matcher: ["/", "/index.html"],
+};
 
 const MARKDOWN_CONTENT = `# ConectaOne — Soluções de Inovação e Ecossistema Corporativo
 
@@ -51,33 +52,22 @@ const MARKDOWN_CONTENT = `# ConectaOne — Soluções de Inovação e Ecossistem
 - Empresas entre R$ 20M e R$ 500M de faturamento em hipercrescimento.
 
 ---
-*Gerado automaticamente pelo middleware de Content Negotiation da ConectaOne.*
 *Para o contexto completo: https://conectaone.com/llms-full.txt*
 `;
 
-export async function onRequest(context) {
-  const { request, next } = context;
+export default function middleware(request) {
   const accept = request.headers.get("Accept") || "";
-  const url = new URL(request.url);
 
-  // Only intercept requests to HTML pages (not static assets, API routes, or .well-known)
-  const isHtmlRoute =
-    !url.pathname.startsWith("/api/") &&
-    !url.pathname.startsWith("/.well-known/") &&
-    !url.pathname.match(/\.(txt|json|xml|css|js|png|jpg|svg|ico|woff|woff2|ttf|eot|map|md)$/);
-
-  // Check if the client prefers markdown (AI agent / LLM)
   const wantsMarkdown =
-    accept.includes("text/markdown") ||
-    accept.includes("text/x-markdown");
+    accept.includes("text/markdown") || accept.includes("text/x-markdown");
 
-  if (isHtmlRoute && wantsMarkdown) {
-    // Return the Markdown representation of the homepage
+  if (wantsMarkdown) {
+    const tokenCount = MARKDOWN_CONTENT.split(/\s+/).length;
     return new Response(MARKDOWN_CONTENT, {
       status: 200,
       headers: {
         "Content-Type": "text/markdown; charset=utf-8",
-        "X-Markdown-Tokens": String(MARKDOWN_CONTENT.split(/\s+/).length),
+        "X-Markdown-Tokens": String(tokenCount),
         "Cache-Control": "public, max-age=3600, s-maxage=86400",
         "Vary": "Accept",
         "Access-Control-Allow-Origin": "*",
@@ -85,7 +75,6 @@ export async function onRequest(context) {
     });
   }
 
-  // Pass through to the normal static asset handler
-  const response = await next();
-  return response;
+  // Pass through
+  return;
 }
