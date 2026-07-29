@@ -7,7 +7,7 @@
   },
   "transport": {
     "type": "sse",
-    "url": "https://conectaone.com/api/mcp/sse"
+    "url": "https://www.conectaone.com/api/mcp/sse"
   },
   "capabilities": {
     "tools": {
@@ -21,5 +21,5 @@
       "listChanged": false
     }
   },
-  "documentationUrl": "https://conectaone.com/llms.txt"
+  "documentationUrl": "https://www.conectaone.com/llms.txt"
 }

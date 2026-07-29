@@ -1,7 +1,7 @@
 {
-  "issuer": "https://conectaone.com",
-  "authorization_endpoint": "https://conectaone.com/auth.md",
-  "jwks_uri": "https://conectaone.com/.well-known/http-message-signatures-directory",
+  "issuer": "https://www.conectaone.com",
+  "authorization_endpoint": "https://www.conectaone.com/auth.md",
+  "jwks_uri": "https://www.conectaone.com/.well-known/http-message-signatures-directory",
   "response_types_supported": ["token"],
   "grant_types_supported": ["client_credentials"],
   "subject_types_supported": ["public"],
@@ -9,20 +9,20 @@
   "scopes_supported": ["openid", "profile"],
   "token_endpoint_auth_methods_supported": ["none"],
   "claims_supported": ["sub", "iss"],
-  "service_documentation": "https://conectaone.com/llms.txt",
-  "op_policy_uri": "https://conectaone.com/auth.md",
+  "service_documentation": "https://www.conectaone.com/llms.txt",
+  "op_policy_uri": "https://www.conectaone.com/auth.md",
   "agent_auth": {
     "skill": "https://isitagentready.com/.well-known/agent-skills/auth-md/SKILL.md",
-    "register_uri": "https://conectaone.com/auth.md",
+    "register_uri": "https://www.conectaone.com/auth.md",
     "identity_types_supported": ["anonymous", "identity_assertion"],
     "identity_assertion": {
       "assertion_types_supported": ["verified_email"],
       "credential_types_supported": ["http-sig"],
-      "claim_uri": "https://conectaone.com/auth.md"
+      "claim_uri": "https://www.conectaone.com/auth.md"
     },
     "anonymous": {
       "credential_types_supported": ["http-sig"],
-      "claim_uri": "https://conectaone.com/auth.md"
+      "claim_uri": "https://www.conectaone.com/auth.md"
     }
   }
 }

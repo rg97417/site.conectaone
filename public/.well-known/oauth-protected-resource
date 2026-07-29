@@ -1,13 +1,13 @@
 {
-  "resource": "https://conectaone.com",
+  "resource": "https://www.conectaone.com",
   "resource_name": "ConectaOne Innovation API",
-  "resource_documentation": "https://conectaone.com/auth.md",
+  "resource_documentation": "https://www.conectaone.com/auth.md",
   "authorization_servers": [
-    "https://conectaone.com"
+    "https://www.conectaone.com"
   ],
   "scopes_supported": ["openid", "profile"],
   "bearer_methods_supported": ["header"],
-  "jwks_uri": "https://conectaone.com/.well-known/http-message-signatures-directory",
-  "resource_policy_uri": "https://conectaone.com/auth.md",
+  "jwks_uri": "https://www.conectaone.com/.well-known/http-message-signatures-directory",
+  "resource_policy_uri": "https://www.conectaone.com/auth.md",
   "resource_signing_alg_values_supported": ["ES256"]
 }

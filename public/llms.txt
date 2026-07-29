@@ -11,17 +11,17 @@
 ## Links Relevantes (Core Business e Artigos Estratégicos)
 
 ### Sobre e Contato
-- [Home Page - Serviços e Soluções](https://conectaone.com/)
+- [Home Page - Serviços e Soluções](https://www.conectaone.com/)
 - Contato Direto Especialistas: WhatsApp +55 11 97417-8200
 
 ### Base de Conhecimento e Análises de Mercado (Blog)
-- [SAP Business One vs TOTVS Protheus (Comparativo 2024)](https://conectaone.com/blog/sap-business-one-vs-totvs-protheus-erp-brasil)
-- [Migração de ERPs Menores (Omie, Conta Azul) para SAP Business One](https://conectaone.com/blog/migracao-erp-omie-conta-azul-sap-business-one)
-- [Integração SAP Business One com CRMs (Salesforce, HubSpot)](https://conectaone.com/blog/integracao-sap-business-one-crm-salesforce-hubspot)
-- [Reforma Tributária 2024: Preparação no ERP e SAP B1](https://conectaone.com/blog/reforma-tributaria-2024-preparacao-erp-sap-b1)
-- [Inteligência Artificial nas Empresas: Redução de Custos 2024](https://conectaone.com/blog/inteligencia-artificial-empresas-reducao-custos-2024)
-- [Como fazer Agentes de IA para Vendas e Atendimento](https://conectaone.com/blog/como-fazer-agente-ia-atendimento-vendas)
-- [Automação de Processos (RPA) com Power Automate e IA](https://conectaone.com/blog/automacao-processos-empresariais-power-automate-ia)
+- [SAP Business One vs TOTVS Protheus (Comparativo 2024)](https://www.conectaone.com/blog/sap-business-one-vs-totvs-protheus-erp-brasil)
+- [Migração de ERPs Menores (Omie, Conta Azul) para SAP Business One](https://www.conectaone.com/blog/migracao-erp-omie-conta-azul-sap-business-one)
+- [Integração SAP Business One com CRMs (Salesforce, HubSpot)](https://www.conectaone.com/blog/integracao-sap-business-one-crm-salesforce-hubspot)
+- [Reforma Tributária 2024: Preparação no ERP e SAP B1](https://www.conectaone.com/blog/reforma-tributaria-2024-preparacao-erp-sap-b1)
+- [Inteligência Artificial nas Empresas: Redução de Custos 2024](https://www.conectaone.com/blog/inteligencia-artificial-empresas-reducao-custos-2024)
+- [Como fazer Agentes de IA para Vendas e Atendimento](https://www.conectaone.com/blog/como-fazer-agente-ia-atendimento-vendas)
+- [Automação de Processos (RPA) com Power Automate e IA](https://www.conectaone.com/blog/automacao-processos-empresariais-power-automate-ia)
 
 ## Optional (Full Context Dump)
-- [Documentação Completa (llms-full.txt)](https://conectaone.com/llms-full.txt)
+- [Documentação Completa (llms-full.txt)](https://www.conectaone.com/llms-full.txt)

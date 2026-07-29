@@ -5,14 +5,14 @@
       "name": "conectaone-innovation-discovery",
       "type": "agent-skill",
       "description": "Descubra e consulte serviços de inovação, ecossistema corporativo, consultoria SAP Business One, IA e transformação digital da ConectaOne.",
-      "url": "https://conectaone.com/llms.txt",
-      "sha256": "c422888a8693b5660e20bd0d1cc6b645f80b6ea7b310bd6ceaf01908f299a2e8"
+      "url": "https://www.conectaone.com/llms.txt",
+      "sha256": "abea27a0e89418eca206fd0bafa89faec765dc32a928cdf533f75cb978c71c70"
     },
     {
       "name": "conectaone-contact-api",
       "type": "api-tool",
       "description": "Ferramenta para contato e envio de propostas para a equipe ConectaOne via API REST.",
-      "url": "https://conectaone.com/openapi.json",
+      "url": "https://www.conectaone.com/openapi.json",
       "sha256": "7ac2bce564d45209aabd17507d114f3aada91477495e3a4b6609571569ebf1c4"
     }
   ]
