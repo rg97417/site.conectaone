@@ -12,7 +12,7 @@
   "service_documentation": "https://www.conectaone.com/llms.txt",
   "op_policy_uri": "https://www.conectaone.com/auth.md",
   "agent_auth": {
-    "skill": "https://isitagentready.com/.well-known/agent-skills/auth-md/SKILL.md",
+    "skill": "https://www.conectaone.com/auth.md",
     "register_uri": "https://www.conectaone.com/auth.md",
     "identity_types_supported": ["anonymous", "identity_assertion"],
     "identity_assertion": {
