@@ -15,14 +15,11 @@
     "skill": "https://www.conectaone.com/auth.md",
     "register_uri": "https://www.conectaone.com/auth.md",
     "identity_types_supported": ["anonymous", "identity_assertion"],
+    "credential_types_supported": ["http-sig"],
+    "claim_uri": "https://www.conectaone.com/auth.md",
     "identity_assertion": {
-      "assertion_types_supported": ["verified_email"],
-      "credential_types_supported": ["http-sig"],
-      "claim_uri": "https://www.conectaone.com/auth.md"
+      "assertion_types_supported": ["verified_email"]
     },
-    "anonymous": {
-      "credential_types_supported": ["http-sig"],
-      "claim_uri": "https://www.conectaone.com/auth.md"
-    }
+    "anonymous": {}
   }
 }
