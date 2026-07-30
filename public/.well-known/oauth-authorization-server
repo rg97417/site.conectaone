@@ -18,8 +18,13 @@
     "credential_types_supported": ["http-sig"],
     "claim_uri": "https://www.conectaone.com/auth.md",
     "identity_assertion": {
-      "assertion_types_supported": ["verified_email"]
+      "assertion_types_supported": ["verified_email"],
+      "credential_types_supported": ["http-sig"],
+      "claim_uri": "https://www.conectaone.com/auth.md"
     },
-    "anonymous": {}
+    "anonymous": {
+      "credential_types_supported": ["http-sig"],
+      "claim_uri": "https://www.conectaone.com/auth.md"
+    }
   }
 }
