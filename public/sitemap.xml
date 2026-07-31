@@ -1,222 +1,272 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://conectaone.com/</loc>
+    <loc>https://www.conectaone.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog</loc>
+    <loc>https://www.conectaone.com/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/como-trocar-de-consultoria-sap-business-one</loc>
+    <loc>https://www.conectaone.com/blog/como-cadastrar-um-fornecedor-no-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/rpa-power-automate-reduzindo-trabalho-manual</loc>
+    <loc>https://www.conectaone.com/blog/como-cadastrar-um-cliente-no-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/reforma-tributaria-sap-business-one</loc>
+    <loc>https://www.conectaone.com/blog/como-adicionar-um-pedido-de-compra-no-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/como-criar-um-saas-b2b-com-ia</loc>
+    <loc>https://www.conectaone.com/blog/como-implantar-o-sap-business-one-guia-completo</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/agentes-de-ia-para-vendas-b2b</loc>
+    <loc>https://www.conectaone.com/blog/como-criar-um-microsaas-de-controle-financeiro-com-ia-no-whatsapp</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/erp-lento-o-que-avaliar-antes-de-customizar-sap</loc>
+    <loc>https://www.conectaone.com/blog/como-criar-um-saas-e-faturar-10-mil-por-mes-b2b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/atendimento-automatizado-ia-generativa</loc>
+    <loc>https://www.conectaone.com/blog/como-criar-um-agente-de-ia-sdr-para-automatizar-vendas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/integracao-sap-business-one-ecommerce</loc>
+    <loc>https://www.conectaone.com/blog/como-automatizar-sua-empresa-com-ia-e-converter-mais</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/rpa-automacao-conciliacao-bancaria</loc>
+    <loc>https://www.conectaone.com/blog/como-usar-ia-para-buscar-informacoes-no-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/ia-rh-onboarding-recrutamento</loc>
+    <loc>https://www.conectaone.com/blog/como-conectar-agentes-de-inteligencia-artificial-ao-sap-b1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/quanto-custa-implementar-sap-business-one</loc>
+    <loc>https://www.conectaone.com/blog/como-trocar-de-consultoria-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/power-automate-vs-uipath-qual-escolher</loc>
+    <loc>https://www.conectaone.com/blog/rpa-power-automate-reduzindo-trabalho-manual</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/integracao-whatsapp-api-sap-business-one</loc>
+    <loc>https://www.conectaone.com/blog/reforma-tributaria-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/fechamento-fiscal-lento-ia-rpa-sap</loc>
+    <loc>https://www.conectaone.com/blog/como-criar-um-saas-b2b-com-ia</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/desenvolvimento-saas-vs-erp-prateleira</loc>
+    <loc>https://www.conectaone.com/blog/agentes-de-ia-para-vendas-b2b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/consultoria-sap-business-one-ia-implementacao</loc>
+    <loc>https://www.conectaone.com/blog/erp-lento-o-que-avaliar-antes-de-customizar-sap</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/inteligencia-artificial-empresas-reducao-custos-2024</loc>
+    <loc>https://www.conectaone.com/blog/atendimento-automatizado-ia-generativa</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/como-fazer-agente-ia-atendimento-vendas</loc>
+    <loc>https://www.conectaone.com/blog/integracao-sap-business-one-ecommerce</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/automacao-processos-empresariais-power-automate-ia</loc>
+    <loc>https://www.conectaone.com/blog/rpa-automacao-conciliacao-bancaria</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/modulos-sap-business-one-versao-11-mitos</loc>
+    <loc>https://www.conectaone.com/blog/ia-rh-onboarding-recrutamento</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/sap-business-one-vs-totvs-protheus-erp-brasil</loc>
+    <loc>https://www.conectaone.com/blog/quanto-custa-implementar-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/migracao-erp-omie-conta-azul-sap-business-one</loc>
+    <loc>https://www.conectaone.com/blog/power-automate-vs-uipath-qual-escolher</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/reforma-tributaria-2024-preparacao-erp-sap-b1</loc>
+    <loc>https://www.conectaone.com/blog/integracao-whatsapp-api-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/integracao-sap-business-one-crm-salesforce-hubspot</loc>
+    <loc>https://www.conectaone.com/blog/fechamento-fiscal-lento-ia-rpa-sap</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/como-criar-microsaas-lovable-v0</loc>
+    <loc>https://www.conectaone.com/blog/desenvolvimento-saas-vs-erp-prateleira</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/seguranca-checkout-pagamentos-saas</loc>
+    <loc>https://www.conectaone.com/blog/consultoria-sap-business-one-ia-implementacao</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/automacao-n8n-erp-sap-business-one</loc>
+    <loc>https://www.conectaone.com/blog/inteligencia-artificial-empresas-reducao-custos-2024</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/chatgpt-vs-claude-vs-gemini-empresas</loc>
+    <loc>https://www.conectaone.com/blog/como-fazer-agente-ia-atendimento-vendas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/cursor-windsurf-claude-code-programacao-ia</loc>
+    <loc>https://www.conectaone.com/blog/automacao-processos-empresariais-power-automate-ia</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/agentes-ia-integracao-sap-business-one</loc>
+    <loc>https://www.conectaone.com/blog/modulos-sap-business-one-versao-11-mitos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/migracao-cloud-sap-business-one</loc>
+    <loc>https://www.conectaone.com/blog/sap-business-one-vs-totvs-protheus-erp-brasil</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/como-criar-agente-ia-atendimento-vendas</loc>
+    <loc>https://www.conectaone.com/blog/migracao-erp-omie-conta-azul-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/supabase-vs-firebase-saas-b2b-2024</loc>
+    <loc>https://www.conectaone.com/blog/reforma-tributaria-2024-preparacao-erp-sap-b1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/webhooks-rest-api-websockets-integracao-saas</loc>
+    <loc>https://www.conectaone.com/blog/integracao-sap-business-one-crm-salesforce-hubspot</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/stripe-connect-marketplace-split-pagamentos-microsaas</loc>
+    <loc>https://www.conectaone.com/blog/como-criar-microsaas-lovable-v0</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/arquitetura-rag-inteligencia-artificial-erp</loc>
+    <loc>https://www.conectaone.com/blog/seguranca-checkout-pagamentos-saas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/one-person-unicorn-fundador-solo-saas-ia</loc>
+    <loc>https://www.conectaone.com/blog/automacao-n8n-erp-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/agencia-automacao-ia-aaa-modelo-negocios</loc>
+    <loc>https://www.conectaone.com/blog/chatgpt-vs-claude-vs-gemini-empresas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/migracao-zapier-para-n8n-reducao-custos</loc>
+    <loc>https://www.conectaone.com/blog/cursor-windsurf-claude-code-programacao-ia</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/sap-hana-vs-sql-server-sap-business-one</loc>
+    <loc>https://www.conectaone.com/blog/agentes-ia-integracao-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/sap-business-one-power-bi-dashboards</loc>
+    <loc>https://www.conectaone.com/blog/migracao-cloud-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog/custo-oculto-aws-otimizacao-sap-b1</loc>
+    <loc>https://www.conectaone.com/blog/como-criar-agente-ia-atendimento-vendas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.conectaone.com/blog/supabase-vs-firebase-saas-b2b-2024</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.conectaone.com/blog/webhooks-rest-api-websockets-integracao-saas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.conectaone.com/blog/stripe-connect-marketplace-split-pagamentos-microsaas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.conectaone.com/blog/arquitetura-rag-inteligencia-artificial-erp</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.conectaone.com/blog/one-person-unicorn-fundador-solo-saas-ia</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.conectaone.com/blog/agencia-automacao-ia-aaa-modelo-negocios</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.conectaone.com/blog/migracao-zapier-para-n8n-reducao-custos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.conectaone.com/blog/sap-hana-vs-sql-server-sap-business-one</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.conectaone.com/blog/sap-business-one-power-bi-dashboards</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.conectaone.com/blog/custo-oculto-aws-otimizacao-sap-b1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -31,6 +31,20 @@ async function run() {
   const baseHtmlPath = path.resolve(distDir, 'index.html');
   const baseHtml = fs.readFileSync(baseHtmlPath, 'utf-8');
 
+  console.log('Prerendering Home Page with Hidden SEO Keywords...');
+  const homeSeoHtml = baseHtml.replace('<div id="root"></div>', `
+    <div id="root">
+      <div style="display: none;" aria-hidden="true">
+        <h1>Consultoria ERP SAP Business One & Desenvolvimento de SaaS</h1>
+        <h2>Como integrar IA com SAP B1?</h2>
+        <p>A ConectaOne é especialista em conectar SAP com IA. Se você busca como criar um agente de IA para vendas, ou como conectar SAP com IA, nossa consultoria SAP Business One tem a resposta.</p>
+        <h2>Como criar um microSaaS ou SaaS financeiro?</h2>
+        <p>Desenvolvemos soluções como o Granazap e Granazap Pro. Quer saber como criar um microSaaS, como criar um SaaS, ou como criar um SaaS financeiro? Fale com a gente.</p>
+      </div>
+    </div>
+  `);
+  fs.writeFileSync(baseHtmlPath, homeSeoHtml);
+
   console.log(`Found ${blogPosts.length} posts to prerender.`);
 
   for (const post of blogPosts) {
@@ -50,7 +64,7 @@ async function run() {
       "@type": "BlogPosting",
       "headline": post.title,
       "description": post.excerpt,
-      "image": "https://conectaone.com/og-image.png",
+      "image": "https://www.conectaone.com/og-image.png",
       "author": {
         "@type": "Organization",
         "name": post.author
@@ -60,7 +74,7 @@ async function run() {
         "name": "ConectaOne",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://conectaone.com/conectaone_logo_principal_1200.png"
+          "url": "https://www.conectaone.com/conectaone_logo_principal_1200.png"
         }
       },
       "datePublished": post.date
@@ -98,17 +112,17 @@ async function run() {
   const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://conectaone.com/</loc>
+    <loc>https://www.conectaone.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://conectaone.com/blog</loc>
+    <loc>https://www.conectaone.com/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 ${slugs.map(slug => `  <url>
-    <loc>https://conectaone.com/blog/${slug}</loc>
+    <loc>https://www.conectaone.com/blog/${slug}</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>`).join('\n')}

@@ -1,3 +1,5 @@
+import { seoBlogPosts } from './seoBlogPosts.js';
+
 export interface BlogPost {
   id: string;
   slug: string;
@@ -11,7 +13,7 @@ export interface BlogPost {
   keywords: string[];
 }
 
-export const blogPosts: BlogPost[] = [
+export const baseBlogPosts: BlogPost[] = [
   {
     id: '1',
     slug: 'como-trocar-de-consultoria-sap-business-one',
@@ -1418,3 +1420,5 @@ A Amazon oferece contratos onde você "reserva" a capacidade daquela máquina. A
 `
   }
 ];
+
+export const blogPosts = [...seoBlogPosts, ...baseBlogPosts];

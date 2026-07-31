@@ -7,19 +7,24 @@ interface SEOProps {
 }
 
 const SEO = ({ 
-  title = "ConectaOne | Consultoria SAP Business One & Soluções em IA",
-  description = "Acelere seu negócio com a ConectaOne. Especialistas em implantação SAP Business One, troca de consultoria, desenvolvimento de SaaS, CRM com IA e RPA (Power Automate) para empresas B2B.",
-  canonical = "https://conectaone.com"
+  title = "ConectaOne | ERP SAP Business One, Consultoria & IA",
+  description = "Consultoria ERP SAP Business One, desenvolvimento de SaaS (como Granazap), integração de SAP com IA, criação de microSaaS e Agentes de IA para vendas e financeiro.",
+  canonical = "https://www.conectaone.com"
 }: SEOProps) => {
   const keywords = [
+    "ERP SAP Business One",
     "consultoria SAP Business One",
-    "trocar de consultoria SAP",
-    "implantação SAP B1",
-    "desenvolvimento de SaaS",
-    "automação de processos",
-    "RPA",
-    "Power Automate",
+    "Como integrar IA com SAP B1",
+    "Como conectar SAP com IA",
+    "Como criar um microSaaS",
+    "Como criar um SaaS",
+    "Como criar um SaaS financeiro",
+    "Como criar um agente de IA",
     "agentes de IA para vendas",
+    "Granazap",
+    "Granazap Pro",
+    "desenvolvimento de SaaS",
+    "trocar de consultoria SAP",
     "inteligência artificial empresas",
     "ConectaOne",
   ];
@@ -29,9 +34,9 @@ const SEO = ({
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "ConectaOne",
-    "url": "https://conectaone.com",
-    "logo": "https://conectaone.com/conectaone_logo_principal_1200.png",
-    "description": "Consultoria especializada em SAP Business One e desenvolvimento de soluções em Inteligência Artificial, RPA e Software Sob Medida (SaaS).",
+    "url": "https://www.conectaone.com",
+    "logo": "https://www.conectaone.com/conectaone_logo_principal_1200.png",
+    "description": "Consultoria especializada em ERP SAP Business One e desenvolvimento de soluções em Inteligência Artificial, RPA e Software Sob Medida (SaaS).",
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "BR"
@@ -47,42 +52,42 @@ const SEO = ({
     "mainEntity": [
       {
         "@type": "Question",
+        "name": "Como integrar IA com SAP Business One?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Integrar Inteligência Artificial com SAP B1 permite criar agentes de IA para atendimento, otimizar vendas e conciliação financeira. A ConectaOne conecta LLMs nativamente ao banco de dados SAP usando integrações seguras."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como criar um agente de IA para vendas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para criar um agente de IA, mapeamos o seu fluxo de vendas, conectamos ao seu ERP ou CRM, e treinamos a inteligência artificial para responder objeções, enviar propostas e fechar negócios automaticamente, operando 24/7."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Como criar um SaaS ou microSaaS financeiro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Desenvolvemos o seu SaaS ou microSaaS do zero (como fizemos com o Granazap e Granazap Pro). Desde a estruturação do banco de dados, arquitetura multitenant, até os painéis de dashboard e módulos financeiros completos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O que é o Granazap e o Granazap Pro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O Granazap é um exemplo de SaaS financeiro desenvolvido para revolucionar o controle de gastos direto pelo WhatsApp. Desenvolvemos soluções SaaS sob medida como essa para nossos clientes."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Como trocar de consultoria SAP Business One?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "A transição de consultoria SAP B1 para a ConectaOne é feita sem impacto na sua operação. Realizamos uma auditoria técnica do seu ambiente, estabilizamos processos críticos e assumimos a gestão com SLA rápido."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Vocês desenvolvem SaaS e soluções customizadas?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sim. Desenvolvemos plataformas SaaS robustas, CRMs customizados e agentes de IA integrados ao seu ecossistema atual (inclusive SAP) para otimizar vendas e reduzir custos operacionais."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Como a Automação e RPA podem ajudar minha empresa?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Através de tecnologias como Power Automate e IA, eliminamos tarefas manuais e repetitivas no seu backoffice. Isso gera ROI imediato ao liberar sua equipe para atividades estratégicas."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "As soluções podem ser personalizadas para meu negócio?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sim. Todas as nossas soluções são customizadas para atender às necessidades específicas do seu negócio. Realizamos uma análise detalhada dos seus processos e objetivos para desenvolver uma solução sob medida."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Por que o SAP Business One é melhor que o TOTVS Protheus para médias empresas?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "O SAP Business One possui um core (núcleo) blindado, focado em melhores práticas globais. Isso reduz drasticamente o Custo Total de Propriedade (TCO) com atualizações, em oposição à grande quantidade de customizações em código do Protheus, garantindo maior escalabilidade para integrar com IA e CRMs modernos."
         }
       }
     ]
