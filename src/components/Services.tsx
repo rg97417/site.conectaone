@@ -82,7 +82,84 @@ const Services = () => {
                 IA, Automações & Software
               </h3>
             </div>
-            
+
+            {/* Exemplos concretos de resultado — inspirado em cases reais */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 32 }}>
+              {[
+                {
+                  num: '01',
+                  text: 'O lead chegou às 23h. A IA respondeu, qualificou e agendou. O vendedor acordou com a reunião marcada.',
+                  tag: 'IA para Triagem de Leads',
+                },
+                {
+                  num: '02',
+                  text: '200 tarefas de backoffice que antes levavam um dia inteiro: concluídas em 8 minutos, sem intervenção humana.',
+                  tag: 'RPA & Power Automate',
+                },
+                {
+                  num: '03',
+                  text: 'O time de vendas identificou em tempo real qual produto travava a meta — e corrigiu antes do fim do mês.',
+                  tag: 'Sistemas para Times de Vendas',
+                },
+              ].map((ex) => (
+                <div
+                  key={ex.num}
+                  style={{
+                    background: '#f8fafc',
+                    border: '1px solid #e5e7eb',
+                    borderRadius: 10,
+                    padding: '16px 20px',
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: 10,
+                      fontWeight: 600,
+                      fontFamily: 'monospace',
+                      letterSpacing: '0.08em',
+                      color: 'var(--blue)',
+                      textTransform: 'uppercase',
+                      display: 'block',
+                      marginBottom: 8,
+                    }}
+                  >
+                    EXEMPLO {ex.num}
+                  </span>
+                  <p
+                    style={{
+                      fontSize: 14,
+                      color: 'var(--navy)',
+                      lineHeight: 1.55,
+                      margin: '0 0 10px',
+                      fontWeight: 500,
+                    }}
+                  >
+                    {ex.text}
+                  </p>
+                  <span
+                    style={{
+                      fontSize: 11,
+                      color: 'var(--muted)',
+                      fontFamily: 'monospace',
+                      letterSpacing: '0.04em',
+                      background: '#e5e7eb',
+                      borderRadius: 4,
+                      padding: '2px 8px',
+                    }}
+                  >
+                    → {ex.tag}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Divisor antes da lista de serviços */}
+            <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: 24, marginBottom: 24 }}>
+              <span style={{ fontSize: 11, fontWeight: 600, color: 'var(--muted)', fontFamily: 'monospace', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                O que está por trás desses resultados
+              </span>
+            </div>
+
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               {aiSoftwareServices.map((s, i) => (
                 <div key={i} style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
