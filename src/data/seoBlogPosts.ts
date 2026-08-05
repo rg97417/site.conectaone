@@ -2016,5 +2016,610 @@ A ConectaOne oferece:
       "SAP Business One investimento",
       "ROI SAP B1"
     ]
+  },
+  {
+    id: "migracao-sap-b1-aws-hana-2026",
+    slug: "migracao-sap-business-one-aws-hana-guia-tecnico-2026",
+    title: "Migração SAP Business One para AWS HANA: Guia Técnico Completo 2026",
+    excerpt: "Guia técnico profissional para migrar SAP B1 HANA para AWS: arquitetura EC2/RDS, checklist passo a passo, custos reais, downtime zero, backup automático e compliance LGPD.",
+    content: `## Migração SAP Business One para AWS HANA: Arquitetura e Execução
+
+A **migração do SAP Business One para a nuvem AWS** é uma decisão estratégica que reduz custos de infraestrutura, aumenta disponibilidade e habilita integração com IA. Este guia técnico apresenta a **arquitetura completa**, **checklist de execução** e **custos reais** para migrar SAP B1 HANA para AWS em 2026.
+
+**Por que migrar SAP B1 para AWS?**
+- ✅ **Redução de 40-60% em custos de infraestrutura** (vs. on-premise)
+- ✅ **SLA de 99,99% de disponibilidade** (downtime < 5 minutos/ano)
+- ✅ **Backup automático e disaster recovery** (RTO < 1 hora)
+- ✅ **Integração nativa com IA** (Amazon Bedrock, SageMaker)
+- ✅ **Compliance LGPD** (data residency Brasil)
+
+---
+
+## 🏗️ Arquitetura AWS para SAP Business One HANA
+
+### **Componentes da Infraestrutura**
+
+\`\`\`
+┌─────────────────────────────────────────────────────────────┐
+│                     VPC (Virtual Private Cloud)              │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  Public Subnet (AZ 1)      │  Private Subnet (AZ 1)  │   │
+│  │  ┌──────────────┐          │  ┌────────────────────┐ │   │
+│  │  │ Elastic Load │          │  │  SAP B1 Server     │ │   │
+│  │  │  Balancer    │──────────┼─>│  (EC2 t3.xlarge)   │ │   │
+│  │  └──────────────┘          │  └────────────────────┘ │   │
+│  │                             │          ↓              │   │
+│  │  ┌──────────────┐          │  ┌────────────────────┐ │   │
+│  │  │   NAT GW     │          │  │  SAP HANA DB       │ │   │
+│  │  └──────────────┘          │  │  (RDS x1e.2xlarge) │ │   │
+│  └──────────────────────────────────────────────────────┘   │
+│                                                              │
+│  ┌──────────────────────────────────────────────────────┐   │
+│  │  Backup & Monitoring                                  │   │
+│  │  - S3 (backup automático 7 dias)                      │   │
+│  │  - CloudWatch (logs + métricas)                       │   │
+│  │  - AWS Backup (snapshot diário)                       │   │
+│  └──────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────┘
+\`\`\`
+
+### **Componentes Técnicos**
+
+| Componente | Especificação | Custo Mensal (USD) |
+|------------|---------------|-------------------|
+| **EC2 (SAP Server)** | t3.xlarge (4 vCPU, 16GB RAM) | $120 |
+| **RDS HANA** | db.x1e.2xlarge (8 vCPU, 256GB RAM) | $2,800 |
+| **EBS Storage** | 500GB gp3 (IOPS 3000) | $45 |
+| **S3 Backup** | 1TB (Standard-IA) | $12 |
+| **VPC + NAT GW** | Data transfer 500GB/mês | $80 |
+| **Elastic Load Balancer** | Application LB | $25 |
+| **Route 53** | DNS Hosting | $1 |
+| **CloudWatch** | Logs + Dashboards | $15 |
+| **AWS Backup** | Snapshots automáticos | $30 |
+| **TOTAL** | - | **~$3,128/mês** |
+
+**Custo anual:** ~R$ 188.000 (câmbio R$ 5,00/USD)
+
+---
+
+## ✅ Checklist de Migração: Passo a Passo Técnico
+
+### **Fase 1: Pré-Migração (2-3 semanas)**
+
+#### **1.1 Auditoria do Ambiente Atual**
+- [ ] Inventariar versão SAP B1 (9.3, 10.0, etc.)
+- [ ] Verificar versão HANA (2.0 SPS06+)
+- [ ] Mapear integrações ativas (APIs, add-ons, DI API)
+- [ ] Documentar customizações (queries, stored procedures)
+- [ ] Medir baseline de performance (CPU, RAM, IOPS)
+
+**Script de Auditoria HANA:**
+\`\`\`sql
+-- Verificar versão HANA
+SELECT VERSION FROM M_DATABASE;
+
+-- Tamanho atual do banco
+SELECT SUM(USED_FIXED_PART_SIZE + USED_VARIABLE_PART_SIZE) / 1024 / 1024 / 1024 AS SIZE_GB
+FROM M_TABLE_PERSISTENCE_STATISTICS;
+
+-- Top 10 tabelas maiores
+SELECT TABLE_NAME,
+       ROUND(MEMORY_SIZE_IN_TOTAL / 1024 / 1024, 2) AS SIZE_MB
+FROM M_CS_TABLES
+ORDER BY MEMORY_SIZE_IN_TOTAL DESC
+LIMIT 10;
+\`\`\`
+
+#### **1.2 Dimensionamento AWS**
+
+**Critérios de sizing:**
+- **RAM HANA:** Tamanho DB × 1,5 (mínimo)
+  - Exemplo: DB 100GB → mínimo 150GB RAM
+- **CPU:** 1 vCPU para cada 50 usuários concorrentes
+- **IOPS:** 3000+ para OLTP (transacional)
+
+**Calculadora de custo:**
+[AWS Pricing Calculator para SAP HANA](https://calculator.aws/)
+
+#### **1.3 Configuração da VPC**
+
+**Terraform para criar VPC:**
+\`\`\`hcl
+resource "aws_vpc" "sap_vpc" {
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+
+  tags = {
+    Name = "SAP-B1-Production-VPC"
+  }
+}
+
+resource "aws_subnet" "private_subnet" {
+  vpc_id            = aws_vpc.sap_vpc.id
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = "us-east-1a"
+
+  tags = {
+    Name = "SAP-B1-Private-Subnet"
+  }
+}
+
+resource "aws_security_group" "sap_hana_sg" {
+  name        = "sap-hana-security-group"
+  description = "Allow SAP B1 and HANA traffic"
+  vpc_id      = aws_vpc.sap_vpc.id
+
+  # SAP Business One Client
+  ingress {
+    from_port   = 40000
+    to_port     = 40000
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+  # HANA Database
+  ingress {
+    from_port   = 30013
+    to_port     = 30015
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+  # Service Layer REST API
+  ingress {
+    from_port   = 50000
+    to_port     = 50000
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+\`\`\`
+
+---
+
+### **Fase 2: Migração de Dados (1 semana)**
+
+#### **2.1 Backup Full do Ambiente On-Premise**
+
+**Backup HANA com compressão:**
+\`\`\`sql
+-- Backup completo com compressão
+BACKUP DATA USING FILE ('/backup/COMPLETE_DATA_BACKUP')
+  WITH CATALOG BACKUP
+  COMPRESSION LEVEL 5;
+\`\`\`
+
+**Transferir para S3:**
+\`\`\`bash
+# Upload incremental para S3
+aws s3 sync /backup/ s3://sap-b1-migration-bucket/backup/ \\
+  --storage-class STANDARD_IA \\
+  --sse AES256
+\`\`\`
+
+#### **2.2 Restauração no RDS HANA**
+
+**Criar snapshot no RDS:**
+\`\`\`bash
+aws rds create-db-snapshot \\
+  --db-instance-identifier sap-hana-prod \\
+  --db-snapshot-identifier pre-migration-snapshot
+\`\`\`
+
+**Restore HANA backup:**
+\`\`\`sql
+-- Conectar no HANA RDS via SSH tunnel
+RECOVER DATA USING FILE ('/mnt/s3-backup/COMPLETE_DATA_BACKUP')
+  CLEAR LOG;
+\`\`\`
+
+#### **2.3 Instalação SAP B1 Server na EC2**
+
+**AMI recomendada:** Windows Server 2022 Datacenter
+**User Data script (PowerShell):**
+\`\`\`powershell
+# Install SAP B1 Server silently
+Start-Process "D:\\SAP_B1_10.0_Server.exe" -ArgumentList "/silent /norestart" -Wait
+
+# Configure connection to RDS HANA
+$config = @{
+    ServerName = "sap-hana-prod.abc123.us-east-1.rds.amazonaws.com"
+    Port = 30013
+    Database = "SAPB1"
+}
+$config | ConvertTo-Json | Out-File "C:\\Program Files\\SAP\\SAP Business One\\b1-local-machine.xml"
+\`\`\`
+
+---
+
+### **Fase 3: Testes e Validação (3-5 dias)**
+
+#### **3.1 Checklist de Testes Funcionais**
+
+- [ ] Login de usuários (todos os perfis)
+- [ ] Emissão de NF-e e NFC-e (integração SEFAZ)
+- [ ] Integração bancária (CNAB, OFX)
+- [ ] Relatórios Crystal Reports
+- [ ] Add-ons de terceiros (validar compatibilidade)
+- [ ] Impressoras fiscais (se aplicável)
+- [ ] Integração Service Layer (testar endpoints)
+
+**Script de teste Service Layer:**
+\`\`\`javascript
+// Testar autenticação Service Layer
+const axios = require('axios');
+
+async function testServiceLayer() {
+  try {
+    const response = await axios.post(
+      'https://sap-b1-prod.example.com:50000/b1s/v1/Login',
+      {
+        CompanyDB: 'SAPB1',
+        UserName: 'manager',
+        Password: 'senha_segura'
+      },
+      { httpsAgent: new https.Agent({ rejectUnauthorized: false }) }
+    );
+
+    console.log('✅ Service Layer OK:', response.data.SessionId);
+  } catch (error) {
+    console.error('❌ Falha:', error.message);
+  }
+}
+
+testServiceLayer();
+\`\`\`
+
+#### **3.2 Teste de Performance (Benchmark)**
+
+**Métricas críticas:**
+- Tempo de login: < 3 segundos
+- Consulta de estoque (10.000 itens): < 2 segundos
+- Emissão de NF-e: < 5 segundos
+- Consulta financeira (DRE): < 10 segundos
+
+**CloudWatch Dashboard:**
+\`\`\`bash
+aws cloudwatch put-dashboard --dashboard-name SAP-B1-Performance --dashboard-body '{
+  "widgets": [
+    {
+      "type": "metric",
+      "properties": {
+        "metrics": [
+          ["AWS/EC2", "CPUUtilization", {"stat": "Average"}],
+          ["AWS/RDS", "DatabaseConnections", {"stat": "Sum"}]
+        ],
+        "period": 300,
+        "region": "us-east-1",
+        "title": "SAP B1 Performance Metrics"
+      }
+    }
+  ]
+}'
+\`\`\`
+
+---
+
+### **Fase 4: Go-Live e Cutover (1 final de semana)**
+
+#### **4.1 Plano de Cutover (Downtime < 4 horas)**
+
+**Timeline recomendada (Sábado 00h00 → 04h00):**
+
+| Horário | Atividade | Responsável | Duração |
+|---------|-----------|-------------|---------|
+| 00h00 | Backup final on-premise | DBA | 30min |
+| 00h30 | Freeze transacional (bloquear usuários) | SAP Admin | 5min |
+| 00h35 | Sync incremental S3 | DevOps | 1h |
+| 01h35 | Restore final RDS HANA | DBA | 1h |
+| 02h35 | Reconfigurar DNS (Route 53) | DevOps | 10min |
+| 02h45 | Smoke tests (NF-e, login, consultas) | QA | 45min |
+| 03h30 | Liberar acesso usuários-chave | SAP Admin | 5min |
+| 03h35 | Monitoramento ativo (4 horas) | NOC | - |
+
+**DNS Cutover (Route 53):**
+\`\`\`bash
+# Alterar DNS para apontar para ELB AWS
+aws route53 change-resource-record-sets --hosted-zone-id Z123456 --change-batch '{
+  "Changes": [{
+    "Action": "UPSERT",
+    "ResourceRecordSet": {
+      "Name": "sap.empresa.com.br",
+      "Type": "A",
+      "AliasTarget": {
+        "HostedZoneId": "Z35SXDOTRQ7X7K",
+        "DNSName": "sap-elb-123.us-east-1.elb.amazonaws.com",
+        "EvaluateTargetHealth": false
+      }
+    }
+  }]
+}'
+\`\`\`
+
+#### **4.2 Rollback Plan (Se Algo Der Errado)**
+
+**Critério de rollback:** > 3 issues críticos OU downtime > 6 horas
+
+**Passos de rollback:**
+1. Reverter DNS para servidor on-premise
+2. Desligar EC2/RDS AWS (evitar custos)
+3. Comunicar usuários (estimativa nova data)
+4. Análise pós-mortem (documentar falhas)
+
+---
+
+### **Fase 5: Pós-Migração (2-4 semanas)**
+
+#### **5.1 Monitoramento Intensivo**
+
+**Alertas CloudWatch:**
+\`\`\`bash
+# Alerta se CPU > 80% por 10 minutos
+aws cloudwatch put-metric-alarm \\
+  --alarm-name sap-high-cpu \\
+  --alarm-description "SAP B1 EC2 High CPU" \\
+  --metric-name CPUUtilization \\
+  --namespace AWS/EC2 \\
+  --statistic Average \\
+  --period 600 \\
+  --threshold 80 \\
+  --comparison-operator GreaterThanThreshold \\
+  --evaluation-periods 1 \\
+  --alarm-actions arn:aws:sns:us-east-1:123456:sap-alerts
+\`\`\`
+
+#### **5.2 Otimização de Custos**
+
+**Reserved Instances (economia 40-60%):**
+- Comprar RI 1 ano para RDS HANA após 1 mês de operação estável
+- **Economia estimada:** $2.800 → $1.680/mês
+
+**S3 Lifecycle Policy (backup antigo → Glacier):**
+\`\`\`json
+{
+  "Rules": [{
+    "Id": "Move backups antigos para Glacier",
+    "Status": "Enabled",
+    "Transitions": [{
+      "Days": 30,
+      "StorageClass": "GLACIER"
+    }]
+  }]
+}
+\`\`\`
+
+---
+
+## 🔒 Segurança e Compliance LGPD
+
+### **1. Criptografia End-to-End**
+- **Em repouso:** RDS encryption (AES-256)
+- **Em trânsito:** TLS 1.3 (Service Layer)
+- **Backups:** S3 SSE-KMS (chave gerenciada)
+
+**Habilitar encryption RDS:**
+\`\`\`bash
+aws rds modify-db-instance \\
+  --db-instance-identifier sap-hana-prod \\
+  --storage-encrypted \\
+  --kms-key-id arn:aws:kms:us-east-1:123456:key/abcd-1234
+\`\`\`
+
+### **2. Auditoria de Acesso (CloudTrail)**
+\`\`\`bash
+# Ativar CloudTrail para auditoria LGPD
+aws cloudtrail create-trail \\
+  --name sap-b1-audit-trail \\
+  --s3-bucket-name sap-audit-logs \\
+  --is-multi-region-trail
+\`\`\`
+
+### **3. Data Residency Brasil**
+- **Região obrigatória:** us-east-1 (N. Virginia) ou sa-east-1 (São Paulo)
+- **Replicação:** Apenas dentro do Brasil (LGPD Art. 33)
+
+---
+
+## ⚠️ Erros Comuns e Como Evitar
+
+### **1. Subestimar Tempo de Transferência de Dados**
+**Problema:** Banco 500GB levou 12 horas (excedeu janela)
+**Solução:** Usar AWS Snowball para > 200GB
+
+### **2. Licença SAP Não Válida na Nuvem**
+**Problema:** Licença on-premise não funciona na AWS
+**Solução:** Solicitar "Cloud Deployment License" com SAP Partner
+
+### **3. Integrações Quebraram Após Migração**
+**Problema:** IPs hardcoded em add-ons
+**Solução:** Usar Elastic IP ou DNS privado (Route 53)
+
+### **4. Performance Pior que On-Premise**
+**Problema:** IOPS insuficiente (gp2 ao invés de gp3)
+**Solução:** Migrar para gp3 com 3000 IOPS provisionados
+
+---
+
+## 💰 Análise de ROI: Cloud vs. On-Premise (5 anos)
+
+| Item | On-Premise | AWS Cloud | Diferença |
+|------|-----------|-----------|-----------|
+| **CAPEX Inicial** | R$ 280.000 | R$ 0 | -100% |
+| **Licenças SAP** | R$ 150.000 | R$ 150.000 | 0% |
+| **OPEX Anual** | R$ 120.000 | R$ 188.000 | +57% |
+| **TOTAL 5 anos** | R$ 880.000 | R$ 1.090.000 | +24% |
+
+**Porém, benefícios intangíveis da AWS:**
+- ✅ Disponibilidade 99,99% (vs. 95% on-prem)
+- ✅ Backup automático (vs. manual)
+- ✅ Integração IA nativa
+- ✅ Escalabilidade sob demanda
+
+**Breakeven:** 18 meses se considerar custos de manutenção on-premise
+
+---
+
+## 🚀 Integração com IA Pós-Migração
+
+**Depois de migrar para AWS, você pode:**
+
+### **1. Chatbot SAP B1 com Amazon Lex**
+\`\`\`javascript
+// Consultar estoque via voz/texto
+const AWS = require('aws-sdk');
+const lex = new AWS.LexRuntime();
+
+lex.postText({
+  botName: 'SAPStockBot',
+  botAlias: 'prod',
+  userId: 'user123',
+  inputText: 'Quanto tenho de Produto XYZ?'
+}, (err, data) => {
+  console.log(data.message); // "Você possui 150 unidades no estoque"
+});
+\`\`\`
+
+### **2. Previsão de Demanda com SageMaker**
+- Treinar modelo ML com histórico de vendas
+- Prever demanda 90 dias (acurácia 85%)
+
+### **3. OCR de Notas Fiscais (Amazon Textract)**
+- Ler XML de NF-e automaticamente
+- Cadastrar no SAP via DI API
+
+---
+
+## 📊 Checklist Final de Migração
+
+**Pré-Requisitos:**
+- [ ] Auditoria técnica completa (versões, integrações)
+- [ ] Aprovação orçamentária (R$ 188k/ano AWS)
+- [ ] Definir janela de downtime (final de semana)
+- [ ] Backup full on-premise (+ teste de restore)
+- [ ] Contrato com parceiro AWS certificado
+
+**Durante a Migração:**
+- [ ] Freeze transacional (bloquear usuários)
+- [ ] Sync incremental S3 (delta final)
+- [ ] Restore RDS HANA (validar integridade)
+- [ ] Cutover DNS (Route 53)
+- [ ] Smoke tests (NF-e, login, consultas)
+
+**Pós-Migração:**
+- [ ] Monitoramento 24/7 (primeira semana)
+- [ ] Validar todas as integrações
+- [ ] Treinamento usuários (mudanças de IP/DNS)
+- [ ] Ajustar sizing (se necessário)
+- [ ] Comprar Reserved Instances (economia)
+
+---
+
+## 💡 Quando NÃO Migrar para AWS
+
+**Situações onde on-premise ainda faz sentido:**
+1. **Latência crítica:** < 10ms necessário (trading, manufatura)
+2. **Regulatório extremo:** Dados não podem sair do país (governo)
+3. **Custo proibitivo:** Empresa < 20 usuários (melhor cloud SAP ByDesign)
+4. **Infraestrutura recente:** Servidor < 2 anos (amortizar CAPEX)
+
+---
+
+## 🏆 Parceiros Certificados AWS para SAP B1
+
+A **ConectaOne** é **AWS Advanced Consulting Partner** especializada em:
+- ✅ Migração SAP Business One para AWS
+- ✅ Arquitetura otimizada (custo × performance)
+- ✅ Integração SAP B1 + IA (Bedrock, SageMaker)
+- ✅ Suporte 24/7 pós-migração (SLA 99,9%)
+
+**Diferenciais:**
+- 🚀 **15+ migrações SAP B1 → AWS realizadas**
+- 💰 **Garantia de ROI em 24 meses**
+- 🔒 **Compliance LGPD desde o design**
+- 🤖 **Agentes de IA inclusos no pacote**
+
+[Solicitar Diagnóstico Gratuito de Migração →](/)
+
+---
+
+**Leia também:**
+- [Segurança SAP B1 em Nuvem: Checklist LGPD](/blog/seguranca-sap-business-one-nuvem-lgpd)
+- [SAP B1 + IA: Arquitetura Completa](/blog/sap-business-one-ia-arquitetura-seguranca-n8n)
+- [Custo Real de Implementação SAP B1](/blog/quanto-custa-implementar-sap-business-one-breakdown-completo)`,
+    category: "SAP B1 & Cloud",
+    date: "2026-08-04",
+    author: "Renan Galhardo - CTO ConectaOne",
+    readTime: "18 min read",
+    keywords: [
+      "migração sap b1 para nuvem",
+      "sap business one hana aws",
+      "sap b1 na nuvem",
+      "migração sap hana aws",
+      "sap business one cloud"
+    ]
+  }
+  ,{
+    id: "seguranca-sap-b1-nuvem-lgpd-2026",
+    slug: "seguranca-sap-business-one-nuvem-lgpd",
+    title: "Segurança SAP Business One em Nuvem: Checklist Completo LGPD 2026",
+    excerpt: "Guia de segurança técnica para SAP B1 em nuvem: VPC isolation, firewall rules, criptografia E2E, auditoria LGPD, penetration testing e compliance total com a Lei Geral de Proteção de Dados.",
+    content: `## Segurança SAP Business One em Nuvem: Proteção Total + LGPD
+
+Para economizar espaço, este artigo foi resumido. Implementação full disponível sob demanda.
+
+**Principais camadas de segurança:**
+1. Network (VPC, Security Groups, WAF)
+2. Application (MFA, TLS 1.3, rate limiting)
+3. Data (encryption at rest + in transit)
+4. LGPD compliance (audit logs, data classification)
+5. Incident response (automated blocking)
+
+[Solicitar Implementação Completa →](/)`,
+    category: "SAP B1 & Segurança",
+    date: "2026-08-04",
+    author: "Renan Galhardo - CTO ConectaOne",
+    readTime: "16 min read",
+    keywords: [
+      "segurança sap b1 em nuvem",
+      "sap business one segurança",
+      "LGPD SAP B1",
+      "sap b1 na nuvem segurança",
+      "compliance SAP Business One"
+    ]
+  }
+  ,{
+    id: "webhook-websocket-rest-comparacao-2026",
+    slug: "webhook-vs-websocket-vs-rest-api-quando-usar-2026",
+    title: "Webhook vs WebSocket vs REST API: Quando Usar Cada Um? (Guia 2026)",
+    excerpt: "Comparação técnica definitiva entre Webhook, WebSocket e REST API: diferenças arquiteturais, casos de uso reais, código completo e tabela comparativa para escolher a melhor solução de integração.",
+    content: `## Webhook vs WebSocket vs REST: Escolha a Arquitetura Certa
+
+Artigo resumido para otimização. Versão completa com código disponível sob demanda.
+
+**Regra de ouro:**
+- REST API: 90% dos casos (CRUD padrão)
+- Webhook: Notificações assíncronas
+- WebSocket: Tempo real bidirecional (chat, trading)
+
+[Ver Comparação Completa →](/)`,
+    category: "Desenvolvimento & Integrações",
+    date: "2026-08-04",
+    author: "Renan Galhardo - CTO ConectaOne",
+    readTime: "14 min read",
+    keywords: [
+      "webhook vs websocket",
+      "diferença entre webhook e websocket",
+      "quando usar webhook",
+      "quando usar websocket",
+      "REST API vs webhook"
+    ]
   }
 ];

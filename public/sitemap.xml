@@ -91,6 +91,21 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.conectaone.com/blog/migracao-sap-business-one-aws-hana-guia-tecnico-2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.conectaone.com/blog/seguranca-sap-business-one-nuvem-lgpd</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.conectaone.com/blog/webhook-vs-websocket-vs-rest-api-quando-usar-2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.conectaone.com/blog/como-trocar-de-consultoria-sap-business-one</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
