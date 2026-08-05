@@ -149,6 +149,35 @@ const BlogPost = () => {
 
   const faqSchema = getFAQSchema();
 
+  // Person schema for E-E-A-T (author credibility)
+  const getPersonSchema = () => {
+    if (post.author.includes('Renan Galhardo')) {
+      return {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Renan Galhardo",
+        "jobTitle": "CTO",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "ConectaOne",
+          "url": "https://conectaone.com"
+        },
+        "knowsAbout": [
+          "SAP Business One",
+          "Inteligência Artificial",
+          "Arquitetura de Software",
+          "n8n",
+          "Cloud Computing",
+          "LGPD"
+        ],
+        "url": "https://conectaone.com"
+      };
+    }
+    return null;
+  };
+
+  const personSchema = getPersonSchema();
+
   return (
     <div className="min-h-screen bg-[#F4F6F9] flex flex-col">
       <SEO
@@ -167,6 +196,13 @@ const BlogPost = () => {
         {faqSchema && (
           <script type="application/ld+json">
             {JSON.stringify(faqSchema)}
+          </script>
+        )}
+
+        {/* Person Schema for E-E-A-T */}
+        {personSchema && (
+          <script type="application/ld+json">
+            {JSON.stringify(personSchema)}
           </script>
         )}
       </Helmet>

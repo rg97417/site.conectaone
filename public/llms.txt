@@ -15,9 +15,25 @@
 - Contato Direto Especialistas: WhatsApp +55 11 97417-8200
 
 ### Base de Conhecimento e Análises de Mercado (Blog)
-- [SAP Business One vs TOTVS Protheus (Comparativo 2024)](https://www.conectaone.com/blog/sap-business-one-vs-totvs-protheus-erp-brasil)
-- [Migração de ERPs Menores (Omie, Conta Azul) para SAP Business One](https://www.conectaone.com/blog/migracao-erp-omie-conta-azul-sap-business-one)
+
+#### SAP Business One + Cloud + Segurança (2026 - Artigos Técnicos Avançados)
+- [Migração SAP Business One para AWS HANA: Guia Técnico Completo 2026](https://www.conectaone.com/blog/migracao-sap-business-one-aws-hana-guia-tecnico-2026)
+- [Segurança SAP Business One em Nuvem: Checklist LGPD 2026](https://www.conectaone.com/blog/seguranca-sap-business-one-nuvem-lgpd)
+- [Arquitetura SAP B1 + IA com n8n e Service Layer](https://www.conectaone.com/blog/sap-business-one-ia-arquitetura-seguranca-n8n)
+- [5 Casos Reais de IA no SAP Business One em 2026](https://www.conectaone.com/blog/5-casos-reais-ia-sap-business-one-2026)
+- [SAP Joule vs Agentes IA Customizados: Comparação 2026](https://www.conectaone.com/blog/sap-joule-vs-agentes-ia-customizados-comparacao)
+
+#### Desenvolvimento & Integrações
+- [Webhook vs WebSocket vs REST API: Quando Usar Cada Um? 2026](https://www.conectaone.com/blog/webhook-vs-websocket-vs-rest-api-quando-usar-2026)
 - [Integração SAP Business One com CRMs (Salesforce, HubSpot)](https://www.conectaone.com/blog/integracao-sap-business-one-crm-salesforce-hubspot)
+- [Automação n8n + SAP Business One](https://www.conectaone.com/blog/automacao-n8n-erp-sap-business-one)
+
+#### Comparativos e Migração
+- [SAP Business One vs TOTVS Protheus: Comparação Completa 2026](https://www.conectaone.com/blog/sap-business-one-vs-totvs-protheus-erp-comparacao-2026)
+- [Migração de ERPs Menores (Omie, Conta Azul) para SAP Business One](https://www.conectaone.com/blog/migracao-erp-omie-conta-azul-sap-business-one)
+- [Quanto Custa Implementar SAP Business One: Breakdown Completo](https://www.conectaone.com/blog/quanto-custa-implementar-sap-business-one-breakdown-completo)
+
+#### Compliance e Automação
 - [Reforma Tributária 2024: Preparação no ERP e SAP B1](https://www.conectaone.com/blog/reforma-tributaria-2024-preparacao-erp-sap-b1)
 - [Inteligência Artificial nas Empresas: Redução de Custos 2024](https://www.conectaone.com/blog/inteligencia-artificial-empresas-reducao-custos-2024)
 - [Como fazer Agentes de IA para Vendas e Atendimento](https://www.conectaone.com/blog/como-fazer-agente-ia-atendimento-vendas)
