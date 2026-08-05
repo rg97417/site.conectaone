@@ -39,38 +39,136 @@ const BlogPost = () => {
     year: 'numeric'
   });
 
+  // Determine schema type based on post content
+  const isTutorial = post.slug.includes('como-criar') || post.slug.includes('tutorial');
+  const isTechnical = post.slug.includes('arquitetura') || post.keywords?.some(k =>
+    k.includes('n8n') || k.includes('Service Layer') || k.includes('LGPD')
+  );
+
+  // Build advanced schema based on article type
+  const getArticleSchema = () => {
+    const baseSchema = {
+      "@context": "https://schema.org",
+      "headline": post.title,
+      "description": post.excerpt,
+      "image": "https://conectaone.com/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": post.author
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ConectaOne",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://conectaone.com/conectaone_logo_principal_1200.png"
+        }
+      },
+      "datePublished": post.date,
+      "dateModified": post.date,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://conectaone.com/blog/${post.slug}`
+      }
+    };
+
+    if (isTechnical) {
+      return {
+        ...baseSchema,
+        "@type": "TechArticle",
+        "proficiencyLevel": "Expert",
+        "dependencies": ["SAP Business One", "n8n", "OpenAI API"],
+        "articleSection": "Software Architecture"
+      };
+    } else if (isTutorial) {
+      return {
+        ...baseSchema,
+        "@type": ["Article", "HowTo"],
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Configurar Service Layer do SAP B1",
+            "text": "Habilitar e testar autenticação no Service Layer"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Configurar WhatsApp API",
+            "text": "Instalar Evolution API e conectar instância"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Criar workflow n8n",
+            "text": "Importar e configurar workflow de automação"
+          }
+        ]
+      };
+    } else {
+      return {
+        ...baseSchema,
+        "@type": "BlogPosting"
+      };
+    }
+  };
+
+  // FAQPage schema for SAP IA articles
+  const getFAQSchema = () => {
+    if (post.keywords?.some(k => k.toLowerCase().includes('sap business one ia'))) {
+      return {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Como integrar IA ao SAP Business One?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A integração de IA ao SAP B1 é feita através do Service Layer (APIs REST), conectando LLMs como GPT-4o ou Claude 3.5 via n8n ou Power Automate, garantindo segurança com LGPD e autenticação OAuth."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Qual o custo de implementar IA no SAP Business One?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O custo varia entre R$ 15.000 a R$ 50.000 dependendo da complexidade. Inclui desenvolvimento (2-4 semanas), APIs OpenAI (~R$ 500/mês) e infraestrutura cloud. ROI típico em 2-6 meses."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "SAP Joule ou agente customizado: qual escolher?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Para 90% das empresas SAP B1, agentes customizados são melhores: ROI mais rápido (2-4 semanas vs 3-6 meses), custo menor (pay-per-use vs licenças), e personalização total."
+            }
+          }
+        ]
+      };
+    }
+    return null;
+  };
+
+  const faqSchema = getFAQSchema();
+
   return (
     <div className="min-h-screen bg-[#F4F6F9] flex flex-col">
-      <SEO 
+      <SEO
         title={`${post.title} | Blog ConectaOne`}
         description={post.excerpt}
         canonical={`https://conectaone.com/blog/${post.slug}`}
       />
-      
+
       <Helmet>
+        {/* Article Schema */}
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": post.title,
-            "description": post.excerpt,
-            "image": "https://conectaone.com/og-image.png",
-            "author": {
-              "@type": "Organization",
-              "name": post.author
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "ConectaOne",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://conectaone.com/conectaone_logo_principal_1200.png"
-              }
-            },
-            "datePublished": post.date,
-            "dateModified": post.date
-          })}
+          {JSON.stringify(getArticleSchema())}
         </script>
+
+        {/* FAQ Schema (if applicable) */}
+        {faqSchema && (
+          <script type="application/ld+json">
+            {JSON.stringify(faqSchema)}
+          </script>
+        )}
       </Helmet>
       
       <Header />
