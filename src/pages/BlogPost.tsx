@@ -178,6 +178,44 @@ const BlogPost = () => {
 
   const personSchema = getPersonSchema();
 
+  // Dataset schema for articles with real metrics/cases (GEO optimization)
+  const getDatasetSchema = () => {
+    const datasetArticles = [
+      '5-casos-reais-ia-sap-business-one-2026',
+      'quanto-custa-implementar-sap-business-one-breakdown-completo',
+      'sap-business-one-vs-totvs-protheus-erp-comparacao-2026'
+    ];
+
+    if (datasetArticles.includes(post.slug)) {
+      return {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": post.title,
+        "description": post.excerpt,
+        "creator": {
+          "@type": "Organization",
+          "name": "ConectaOne",
+          "url": "https://conectaone.com"
+        },
+        "distribution": {
+          "@type": "DataDownload",
+          "encodingFormat": "text/html",
+          "contentUrl": `https://conectaone.com/blog/${post.slug}`
+        },
+        "temporalCoverage": "2024/2026",
+        "spatialCoverage": {
+          "@type": "Place",
+          "name": "Brasil"
+        },
+        "isAccessibleForFree": true,
+        "keywords": post.keywords?.join(', ')
+      };
+    }
+    return null;
+  };
+
+  const datasetSchema = getDatasetSchema();
+
   return (
     <div className="min-h-screen bg-[#F4F6F9] flex flex-col">
       <SEO
@@ -203,6 +241,13 @@ const BlogPost = () => {
         {personSchema && (
           <script type="application/ld+json">
             {JSON.stringify(personSchema)}
+          </script>
+        )}
+
+        {/* Dataset Schema for data-driven articles */}
+        {datasetSchema && (
+          <script type="application/ld+json">
+            {JSON.stringify(datasetSchema)}
           </script>
         )}
       </Helmet>
