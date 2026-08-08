@@ -131,23 +131,30 @@ async function run() {
   // 3. Auto-generate sitemap.xml
   console.log('Generating dynamic sitemap.xml...');
   const slugs = blogPosts.map(p => p.slug);
+  const today = new Date().toISOString().split('T')[0];
   const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.conectaone.com/</loc>
+    <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog</loc>
+    <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-${slugs.map(slug => `  <url>
+${slugs.map(slug => {
+  const post = blogPosts.find(p => p.slug === slug);
+  return `  <url>
     <loc>https://www.conectaone.com/blog/${slug}</loc>
+    <lastmod>${post?.date || today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>`).join('\n')}
+  </url>`;
+}).join('\n')}
 </urlset>`;
   
   fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapContent);

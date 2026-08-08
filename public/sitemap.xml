@@ -2,316 +2,379 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.conectaone.com/</loc>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog</loc>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-cadastrar-um-fornecedor-no-sap-business-one</loc>
+    <lastmod>2024-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-cadastrar-um-cliente-no-sap-business-one</loc>
+    <lastmod>2024-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-adicionar-um-pedido-de-compra-no-sap-business-one</loc>
+    <lastmod>2024-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-implantar-o-sap-business-one-guia-completo</loc>
+    <lastmod>2024-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-criar-um-microsaas-de-controle-financeiro-com-ia-no-whatsapp</loc>
+    <lastmod>2024-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-criar-um-saas-e-faturar-10-mil-por-mes-b2b</loc>
+    <lastmod>2024-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-criar-um-agente-de-ia-sdr-para-automatizar-vendas</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-automatizar-sua-empresa-com-ia-e-converter-mais</loc>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-usar-ia-para-buscar-informacoes-no-sap-business-one</loc>
+    <lastmod>2024-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-conectar-agentes-de-inteligencia-artificial-ao-sap-b1</loc>
+    <lastmod>2024-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/sap-business-one-ia-arquitetura-seguranca-n8n</loc>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/sap-joule-vs-agentes-ia-customizados-comparacao</loc>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/5-casos-reais-ia-sap-business-one-2026</loc>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-criar-chatbot-whatsapp-consulta-sap-business-one</loc>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/sap-business-one-vs-totvs-protheus-erp-comparacao-2026</loc>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/quanto-custa-implementar-sap-business-one-breakdown-completo</loc>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/migracao-sap-business-one-aws-hana-guia-tecnico-2026</loc>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/seguranca-sap-business-one-nuvem-lgpd</loc>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/webhook-vs-websocket-vs-rest-api-quando-usar-2026</loc>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-trocar-de-consultoria-sap-business-one</loc>
+    <lastmod>2024-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/rpa-power-automate-reduzindo-trabalho-manual</loc>
+    <lastmod>2024-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/reforma-tributaria-sap-business-one</loc>
+    <lastmod>2024-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-criar-um-saas-b2b-com-ia</loc>
+    <lastmod>2024-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/agentes-de-ia-para-vendas-b2b</loc>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/erp-lento-o-que-avaliar-antes-de-customizar-sap</loc>
+    <lastmod>2024-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/atendimento-automatizado-ia-generativa</loc>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/integracao-sap-business-one-ecommerce</loc>
+    <lastmod>2024-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/rpa-automacao-conciliacao-bancaria</loc>
+    <lastmod>2024-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/ia-rh-onboarding-recrutamento</loc>
+    <lastmod>2024-07-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/quanto-custa-implementar-sap-business-one</loc>
+    <lastmod>2024-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/power-automate-vs-uipath-qual-escolher</loc>
+    <lastmod>2024-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/integracao-whatsapp-api-sap-business-one</loc>
+    <lastmod>2024-07-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/fechamento-fiscal-lento-ia-rpa-sap</loc>
+    <lastmod>2024-08-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/desenvolvimento-saas-vs-erp-prateleira</loc>
+    <lastmod>2024-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/consultoria-sap-business-one-ia-implementacao</loc>
+    <lastmod>2024-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/inteligencia-artificial-empresas-reducao-custos-2024</loc>
+    <lastmod>2024-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-fazer-agente-ia-atendimento-vendas</loc>
+    <lastmod>2024-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/automacao-processos-empresariais-power-automate-ia</loc>
+    <lastmod>2024-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/modulos-sap-business-one-versao-11-mitos</loc>
+    <lastmod>2024-09-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/sap-business-one-vs-totvs-protheus-erp-brasil</loc>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/migracao-erp-omie-conta-azul-sap-business-one</loc>
+    <lastmod>2024-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/reforma-tributaria-2024-preparacao-erp-sap-b1</loc>
+    <lastmod>2024-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/integracao-sap-business-one-crm-salesforce-hubspot</loc>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-criar-microsaas-lovable-v0</loc>
+    <lastmod>2024-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/seguranca-checkout-pagamentos-saas</loc>
+    <lastmod>2024-06-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/automacao-n8n-erp-sap-business-one</loc>
+    <lastmod>2024-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/chatgpt-vs-claude-vs-gemini-empresas</loc>
+    <lastmod>2024-06-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/cursor-windsurf-claude-code-programacao-ia</loc>
+    <lastmod>2024-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/agentes-ia-integracao-sap-business-one</loc>
+    <lastmod>2024-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/migracao-cloud-sap-business-one</loc>
+    <lastmod>2024-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/como-criar-agente-ia-atendimento-vendas</loc>
+    <lastmod>2024-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/supabase-vs-firebase-saas-b2b-2024</loc>
+    <lastmod>2024-06-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/webhooks-rest-api-websockets-integracao-saas</loc>
+    <lastmod>2024-06-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/stripe-connect-marketplace-split-pagamentos-microsaas</loc>
+    <lastmod>2024-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/arquitetura-rag-inteligencia-artificial-erp</loc>
+    <lastmod>2024-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/one-person-unicorn-fundador-solo-saas-ia</loc>
+    <lastmod>2024-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/agencia-automacao-ia-aaa-modelo-negocios</loc>
+    <lastmod>2024-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/migracao-zapier-para-n8n-reducao-custos</loc>
+    <lastmod>2024-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/sap-hana-vs-sql-server-sap-business-one</loc>
+    <lastmod>2024-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/sap-business-one-power-bi-dashboards</loc>
+    <lastmod>2024-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.conectaone.com/blog/custo-oculto-aws-otimizacao-sap-b1</loc>
+    <lastmod>2024-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
