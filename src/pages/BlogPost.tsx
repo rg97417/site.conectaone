@@ -8,6 +8,7 @@ import { blogPosts } from '@/data/blogPosts';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import BlogCTA from '@/components/BlogCTA';
+import { getBreadcrumbSchema, getEnhancedFAQSchema } from '@/utils/enhancedSchemas';
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -110,9 +111,12 @@ const BlogPost = () => {
     }
   };
 
-  // FAQPage schema for SAP IA articles
-  const getFAQSchema = () => {
-    if (post.keywords?.some(k => k.toLowerCase().includes('sap business one ia'))) {
+  // Enhanced FAQ schema (top 15 articles with custom questions)
+  const enhancedFaqSchema = getEnhancedFAQSchema(post.slug);
+
+  // Fallback FAQ for SAP IA articles without enhanced schema
+  const getFallbackFAQSchema = () => {
+    if (!enhancedFaqSchema && post.keywords?.some(k => k.toLowerCase().includes('sap business one ia'))) {
       return {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -147,7 +151,7 @@ const BlogPost = () => {
     return null;
   };
 
-  const faqSchema = getFAQSchema();
+  const faqSchema = enhancedFaqSchema || getFallbackFAQSchema();
 
   // Person schema for E-E-A-T (author credibility)
   const getPersonSchema = () => {
@@ -216,6 +220,9 @@ const BlogPost = () => {
 
   const datasetSchema = getDatasetSchema();
 
+  // Breadcrumb schema (universal - all posts)
+  const breadcrumbSchema = getBreadcrumbSchema(post);
+
   return (
     <div className="min-h-screen bg-[#F4F6F9] flex flex-col">
       <SEO
@@ -230,7 +237,12 @@ const BlogPost = () => {
           {JSON.stringify(getArticleSchema())}
         </script>
 
-        {/* FAQ Schema (if applicable) */}
+        {/* BreadcrumbList Schema (Priority 1 - All Posts) */}
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+
+        {/* Enhanced FAQ Schema (Priority 2 - Top 15 Articles) */}
         {faqSchema && (
           <script type="application/ld+json">
             {JSON.stringify(faqSchema)}
