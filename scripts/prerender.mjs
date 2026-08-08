@@ -57,8 +57,25 @@ async function run() {
     // Replace Meta Tags
     html = html.replace(/<title>.*<\/title>/, `<title>${post.title} | Blog ConectaOne</title>`);
     html = html.replace(/<meta name="description" content="[^"]*"/, `<meta name="description" content="${post.excerpt}"`);
-    
-    // Inject JSON-LD
+
+    // Add canonical and Open Graph meta tags
+    const canonicalUrl = `https://www.conectaone.com/blog/${post.slug}`;
+    const metaTags = `
+    <link rel="canonical" href="${canonicalUrl}" />
+    <meta property="og:title" content="${post.title}" />
+    <meta property="og:description" content="${post.excerpt}" />
+    <meta property="og:url" content="${canonicalUrl}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://www.conectaone.com/og-image.png" />
+    <meta property="article:published_time" content="${post.date}" />
+    <meta property="article:author" content="${post.author}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${post.title}" />
+    <meta name="twitter:description" content="${post.excerpt}" />
+    <meta name="twitter:image" content="https://www.conectaone.com/og-image.png" />`;
+    html = html.replace('</head>', `${metaTags}\n  </head>`);
+
+    // Inject JSON-LD with complete schema
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
@@ -77,7 +94,12 @@ async function run() {
           "url": "https://www.conectaone.com/conectaone_logo_principal_1200.png"
         }
       },
-      "datePublished": post.date
+      "datePublished": post.date,
+      "dateModified": post.date,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://www.conectaone.com/blog/${post.slug}`
+      }
     };
     
     const jsonLdScript = `\n    <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`;
