@@ -15,9 +15,29 @@ export default defineConfig({
     sourcemap: false,
     minify: 'esbuild',
     target: 'es2015',
-    modulePreload: false,
-    cssCodeSplit: false,
-    chunkSizeWarningLimit: 1000
+    modulePreload: {
+      polyfill: false,
+    },
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 500,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // React core - raramente muda, excelente para cache
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          // Radix UI components - atualizações menos frequentes
+          'ui-vendor': [
+            '@radix-ui/react-accordion',
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-dropdown-menu',
+            '@radix-ui/react-tabs',
+            '@radix-ui/react-tooltip'
+          ],
+          // Utilities - estáveis
+          'utils': ['clsx', 'tailwind-merge', 'class-variance-authority'],
+        },
+      },
+    },
   },
   server: {
     host: true,
